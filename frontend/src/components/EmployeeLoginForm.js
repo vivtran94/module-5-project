@@ -32,7 +32,7 @@ export class EmployeeLoginForm extends React.Component {
                         null
                         }
                         </div>
-                    <div className="ui blue button" onClick={this.handleSubmit}>Log In</div>
+                    <div className="ui pink button" onClick={this.handleSubmit}>Log In</div>
 
                 </form>
             </div>

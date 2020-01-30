@@ -1,10 +1,10 @@
-PetOwner.destroy_all
+User.destroy_all
 Pet.destroy_all
 Prescription.destroy_all
 Medication.destroy_all
 Task.destroy_all
 Appointment.destroy_all
-MedicalNote.destroy_all
+Note.destroy_all
 Employee.destroy_all
 
 admin = Employee.create(
@@ -20,4 +20,5 @@ admin = Employee.create(
     phone_number_type: "Cell",
     email: "viviantran@vetclinic.com"
     )
+    
 

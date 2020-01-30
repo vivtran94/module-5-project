@@ -1,9 +1,9 @@
 import React from 'react';
 
-export function ServicesPage() {
+export function PetPortalProfilePage() {
     return (
         <div>
-            ServicesPage
+            PetPortalProfilePage
         </div>
     )
 }

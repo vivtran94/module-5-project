@@ -1,6 +1,6 @@
-class CreatePetOwner < ActiveRecord::Migration[6.0]
+class CreateUser < ActiveRecord::Migration[6.0]
   def change
-    create_table :pet_owners do |t|
+    create_table :users do |t|
       t.string :first_name
       t.string :last_name
       t.date :date_of_birth
@@ -12,7 +12,7 @@ class CreatePetOwner < ActiveRecord::Migration[6.0]
       t.string :email
       t.integer :driver_license
       t.string :username
-      t.string :password
+      t.string :password_digest
 
       t.string :pending_first_name, default: nil
       t.string :pending_last_name, default: nil

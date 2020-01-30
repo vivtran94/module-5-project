@@ -1,46 +1,49 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import {Modal, Dropdown, Menu} from 'semantic-ui-react'
-import {LoginPage} from './LoginPage'
-import {SignUpForm} from './SignUpForm'
+import {Modal, Dropdown} from 'semantic-ui-react'
+import {PetPortalLoginForm} from './PetPortalLoginForm'
+import {EmployeeLoginForm} from './EmployeeLoginForm'
 
 export class PublicNavBar extends React.Component {
+    
     state = { 
         open: false,
-        whichModal: ""
+        displayModal: ""
     }
 
-    showSignUp = (size) => () => this.setState({ size, open: true, whichModal:"signup"})
-    showPetOwnerLogin = (size) => () => this.setState({ size, open: true, whichModal:"petownerlogin"})
-    showEmployeeLogin = (size) => () => this.setState({ size, open: true, whichModal:"employeelogin"})
+    showPetOwnerLogin = (size) => () => this.setState({ size, open: true, displayModal:"petownerlogin"})
+    showEmployeeLogin = (size) => () => this.setState({ size, open: true, displayModal:"employeelogin"})
     close = () => this.setState({ open: false })
 
     render() {
         const { open, size } = this.state
         return (
-            <div>
-                <div class="ui menu">
+            <div >
+                <div className="ui menu">
                     <Link className="item" to="/">Home</Link>
                     <Link className="item" to="/services">Services</Link>
                     <Link className="item" to="/meetourstaff">Meet Our Staff</Link>
-                    <div class="right menu">
-                        <div className="item" onClick={this.showSignUp('small')}>Sign Up</div>
+                    <div className="right menu">
                         <div>
                         <Dropdown text='Login' pointing className='link item'>
                             <Dropdown.Menu>
-                                <Dropdown.Item>Pet Owner</Dropdown.Item>
+                                <Dropdown.Item onClick={this.showPetOwnerLogin("mini")}>Pet Portal</Dropdown.Item>
                                 <Dropdown.Divider />
-                                <Dropdown.Item>Employee</Dropdown.Item>
+                                <Dropdown.Item onClick={this.showEmployeeLogin("mini")}>Employee Portal</Dropdown.Item>
                             </Dropdown.Menu>
                             </Dropdown>
                         </div>
+                        <Link className="item" to="/signup">Sign Up</Link>
                     </div>
                 </div>
 
+                
                 <Modal size={size} open={open} onClose={this.close}>
-                    <Modal.Header>Sign Up</Modal.Header>
+                    <Modal.Header>
+                        {this.state.displayModal === "employeelogin" ? "Employee Portal" : "Pet Portal"}
+                    </Modal.Header>
                     <Modal.Content>
-                        <SignUpForm close={this.close}/>
+                        {this.state.displayModal === "employeelogin" ? <EmployeeLoginForm/> : <PetPortalLoginForm/>}
                     </Modal.Content>
                 </Modal>
 

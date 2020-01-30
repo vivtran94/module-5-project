@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 2020_01_29_163958) do
     t.date "date"
     t.time "start_time"
     t.time "end_time"
-    t.boolean "petowner_confirmed", default: false
+    t.boolean "user_confirmed", default: false
     t.boolean "employee_confirmed", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 2020_01_29_163958) do
 
   create_table "employees", force: :cascade do |t|
     t.string "username"
-    t.string "password"
+    t.string "password_digest"
     t.string "street_address"
     t.string "street_state"
     t.integer "street_zipcode"
@@ -38,44 +38,23 @@ ActiveRecord::Schema.define(version: 2020_01_29_163958) do
     t.string "email"
   end
 
-  create_table "medical_notes", force: :cascade do |t|
-    t.integer "pet_id"
-    t.integer "employee_id"
-    t.date "date"
-    t.text "note_body"
-    t.boolean "visible_to_petowner", default: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "medications", force: :cascade do |t|
     t.string "brand_name"
     t.string "generic_name"
   end
 
-  create_table "pet_owners", force: :cascade do |t|
-    t.string "first_name"
-    t.string "last_name"
-    t.date "date_of_birth"
-    t.string "street_address"
-    t.string "street_state"
-    t.integer "street_zipcode"
-    t.integer "phone_number"
-    t.string "phone_number_type"
-    t.string "email"
-    t.integer "driver_license"
-    t.string "username"
-    t.string "password"
-    t.string "pending_first_name"
-    t.string "pending_last_name"
-    t.date "pending_date_of_birth"
-    t.string "pending_address"
-    t.integer "pending_phone_number"
-    t.string "pending_email"
+  create_table "notes", force: :cascade do |t|
+    t.integer "pet_id"
+    t.integer "employee_id"
+    t.date "date"
+    t.text "note_body"
+    t.boolean "visible_to_user", default: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "pets", force: :cascade do |t|
-    t.integer "petowner_id"
+    t.integer "user_id"
     t.string "name"
     t.date "date_of_birth"
     t.string "gender"
@@ -99,7 +78,7 @@ ActiveRecord::Schema.define(version: 2020_01_29_163958) do
   end
 
   create_table "tasks", force: :cascade do |t|
-    t.integer "petowner_id"
+    t.integer "user_id"
     t.integer "employee_id"
     t.string "task_title"
     t.text "task_body"
@@ -107,6 +86,27 @@ ActiveRecord::Schema.define(version: 2020_01_29_163958) do
     t.boolean "task_completed", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.date "date_of_birth"
+    t.string "street_address"
+    t.string "street_state"
+    t.integer "street_zipcode"
+    t.integer "phone_number"
+    t.string "phone_number_type"
+    t.string "email"
+    t.integer "driver_license"
+    t.string "username"
+    t.string "password_digest"
+    t.string "pending_first_name"
+    t.string "pending_last_name"
+    t.date "pending_date_of_birth"
+    t.string "pending_address"
+    t.integer "pending_phone_number"
+    t.string "pending_email"
   end
 
 end

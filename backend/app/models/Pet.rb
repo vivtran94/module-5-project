@@ -1,12 +1,12 @@
 class Pet < ActiveRecord::Base
 
-    belongs_to :pet_owner
+    belongs_to :user
     
     has_many :appointments
     has_many :employees, through: :appointments
 
-    has_many :medical_notes
-    has_many :employees, through: :medical_notes
+    has_many :notes
+    has_many :employees, through: :notes
 
     has_many :prescriptions
     has_many :medications, through: :prescriptions

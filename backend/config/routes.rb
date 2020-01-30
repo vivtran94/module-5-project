@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
-  resources :pet_owners
+  resources :users
   resources :employees
   resources :pets
+
+  post('/login', { to: 'users#login'})
   
 end

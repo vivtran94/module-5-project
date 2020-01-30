@@ -1,10 +1,10 @@
-class PetOwnersController < ApplicationController
+class UsersController < ApplicationController
 
     def create 
-        if PetOwner.find_by({ username: params[:username]})
+        if User.find_by({ username: params[:username]})
             render json: { failed: true, message: "Username already taken. Try another one."}
         else
-            user = PetOwner.create(
+            user = User.create(
                 first_name: params[:firstName],
                 last_name: params[:lastName],
                 date_of_birth: params[:dateOfBirth],
@@ -23,13 +23,14 @@ class PetOwnersController < ApplicationController
     end
 
     def login
-        user = PetOwner.find_by({username: params[:username]})
+        user = User.find_by({username: params[:username]})
+        token = JWT.encode( { id: user.id }, 'YOUR SECRET')
         if user.authenticate(params[:password])
-            render json: {user: user, token: JWT.encode( { id: user.id }, 'YOUR SECRET')}
+            render json: {user: user, token: token}
+        else
+            render json: { failed: true, message: 'Incorrect username or password'}
         end
+    
     end
-
-
-
 
 end

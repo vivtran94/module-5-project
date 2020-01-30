@@ -1,16 +1,32 @@
 import {createStore} from 'redux'
 
 const initialState = {
-    data: []
+    usernameInput: "",
+    passwordInput: "",
+    currentUser: []
 }
 
 const reducer = (currentState, action) => {
     switch(action.type){
-        case 'NAME_OF_ACTION' :
+        case 'STORE_USERNAME_INPUT' :
             return {
-                ...currentState
+                ...currentState,
+                usernameInput: action.payload
             }
         break;
+        case 'STORE_PASSWORD_INPUT' :
+            return {
+                ...currentState,
+                passwordInput: action.payload
+            }
+        break;
+        case 'STORE_CURRENT_USER' :
+            return {
+                ...currentState,
+                currentUser: action.payload
+            }
+        break;
+
     }
     return currentState  
 }
