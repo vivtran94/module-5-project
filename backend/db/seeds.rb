@@ -16,8 +16,7 @@ admin = Employee.create(
     first_name: "Vivian",
     last_name: "Tran",
     role: "admin",
-    phone_number: "1112223333",
-    phone_number_type: "Cell",
+    phone_number: "111-222-3333",
     email: "viviantran@vetclinic.com"
     )
     

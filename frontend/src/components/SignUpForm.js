@@ -10,10 +10,10 @@ export class SignUpForm extends React.Component {
         lastNameInput: "",
         dateOfBirthInput: "",
         streetAddressInput: "",
+        cityInput: "",
         stateInput: "",
         zipCodeInput: "",
         phoneNumberInput: "",
-        phoneNumberTypeInput: "",
         emailInput: "",
         driverLicenseInput: "",
         usernameInput: "",
@@ -33,10 +33,10 @@ export class SignUpForm extends React.Component {
                 lastName: this.state.lastNameInput,
                 dateOfBirth: this.state.dateOfBirthInput,
                 streetAddress: this.state.streetAddressInput,
+                city: this.state.cityInput,
                 state: this.state.stateInput,
                 zipCode: this.state.zipCodeInput,
                 phoneNumber: this.state.phoneNumberInput,
-                phoneNumberType: this.state.phoneNumberTypeInput,
                 email: this.state.emailInput,
                 driverLicense: this.state.driverLicenseInput,
                 username: this.state.usernameInput,
@@ -61,7 +61,7 @@ export class SignUpForm extends React.Component {
                 <div style={{ "maxWidth": "700px", margin: "auto"}}>
                     <h1>Sign Up Form</h1>
                     <form className="ui form" >
-                        <div className="two fields">
+                        <div className="three fields">
                             <div className="field">
                                 <label>First Name</label>
                                 <input type="text" placeholder="First Name"
@@ -74,21 +74,27 @@ export class SignUpForm extends React.Component {
                                 onChange={event => this.setState({ lastNameInput: event.target.value })}
                                 value={this.state.lastNameInput}/>
                             </div>
-                        </div>
-                        <div className="field">
-                            <label>Date of Birth  (MM-DD-YYYY)</label>
-                            <input type="text" placeholder="Date of Birth"
-                            onChange={event => this.setState({ dateOfBirthInput: event.target.value })}
-                            value={this.state.dateOfBirthInput}/>
-                        </div>
-                        <div className="field">
-                            <label>Street Address</label>
-                            <input type="text" placeholder="Street Address"
-                            onChange={event => this.setState({ streetAddressInput: event.target.value })}
-                            value={this.state.streetAddressInput}/>
+                            <div className="field">
+                                <label>Date of Birth</label>
+                                <input type="text" placeholder="MM-DD-YYYY"
+                                onChange={event => this.setState({ dateOfBirthInput: event.target.value })}
+                                value={this.state.dateOfBirthInput}/>
+                            </div>
                         </div>
                         <div className="fields">
-                            <div className="twelve wide field">
+                            <div className="seven wide field">
+                                <label>Street Address</label>
+                                <input type="text" placeholder="Street Address"
+                                onChange={event => this.setState({ streetAddressInput: event.target.value })}
+                                value={this.state.streetAddressInput}/>
+                            </div>
+                            <div className="field">
+                                <label>City</label>
+                                <input type="text" placeholder="City"
+                                onChange={event => this.setState({ cityInput: event.target.value })}
+                                value={this.state.cityInput}/>
+                            </div>
+                            <div className="five wide field">
                                     <label>State</label>
                                     <select className="ui fluid dropdown"
                                     onChange={event => this.setState({ stateInput: event.target.value })}
@@ -154,26 +160,13 @@ export class SignUpForm extends React.Component {
                                 value={this.state.zipCodeInput}/>
                             </div>
                         </div>
-                        <div className="fields">
-                            <div className="twelve wide field">
-                                <label>Primary Phone Number</label>
-                                <input type="text" placeholder="Primary Phone Number"
+                        <div className="three fields">
+                            <div className="field">
+                                <label>Phone Number</label>
+                                <input type="text" placeholder="000-000-0000"
                                 onChange={event => this.setState({ phoneNumberInput: event.target.value })}
                                 value={this.state.phoneNumberInput}/>
                             </div>
-                            <div className="five wide field">
-                                    <label>Type</label>
-                                    <select className="ui fluid dropdown"
-                                    onChange={event => this.setState({ phoneNumberTypeInput: event.target.value })}
-                                    value={this.state.phoneNumberTypeInput}>
-                                        <option value="">Type</option>
-                                        <option value="Cell">Cell</option>
-                                        <option value="Home">Home</option>
-                                        <option value="Work">Work</option>
-                                    </select>
-                            </div>
-                        </div>
-                        <div className="two fields">
                             <div className="field">
                                 <label>E-mail Address</label>
                                 <input type="text" placeholder="E-mail Address"

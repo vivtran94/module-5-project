@@ -3,7 +3,8 @@ import {createStore} from 'redux'
 const initialState = {
     usernameInput: "",
     passwordInput: "",
-    currentUser: []
+    currentUser: null,
+    currentEmployee: null
 }
 
 const reducer = (currentState, action) => {
@@ -13,19 +14,21 @@ const reducer = (currentState, action) => {
                 ...currentState,
                 usernameInput: action.payload
             }
-        break;
         case 'STORE_PASSWORD_INPUT' :
             return {
                 ...currentState,
                 passwordInput: action.payload
             }
-        break;
         case 'STORE_CURRENT_USER' :
             return {
                 ...currentState,
                 currentUser: action.payload
             }
-        break;
+        case 'STORE_CURRENT_EMPLOYEE' :
+            return {
+                ...currentState,
+                currentEmployee: action.payload
+            }
 
     }
     return currentState  

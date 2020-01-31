@@ -20,13 +20,14 @@ export function PetPortalLoginForm() {
                 password: passwordInput
             })
         })
-            .then(res => res.json())
-            .then(login => {
+            .then(response => response.json())
+            .then(response => {
                 
-                if (login.failed) {
-                    console.log(login.message)
+                if (response.failed) {
+                    console.log(response.message)
                 } else {
-                    dispatch({ type: 'STORE_CURRENT_USER', payload: login})
+                    dispatch({ type: 'STORE_CURRENT_USER', payload: response.user})
+                    localStorage.setItem("token", response.token)
                     history.push('/myprofile')
                 }
             })

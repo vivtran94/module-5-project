@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 2020_01_29_163958) do
   create_table "appointments", force: :cascade do |t|
     t.integer "pet_id"
     t.integer "employee_id"
-    t.date "date"
+    t.string "date"
     t.time "start_time"
     t.time "end_time"
     t.boolean "user_confirmed", default: false
@@ -33,8 +33,7 @@ ActiveRecord::Schema.define(version: 2020_01_29_163958) do
     t.string "first_name"
     t.string "last_name"
     t.string "role"
-    t.integer "phone_number"
-    t.string "phone_number_type"
+    t.string "phone_number"
     t.string "email"
   end
 
@@ -46,7 +45,7 @@ ActiveRecord::Schema.define(version: 2020_01_29_163958) do
   create_table "notes", force: :cascade do |t|
     t.integer "pet_id"
     t.integer "employee_id"
-    t.date "date"
+    t.string "date"
     t.text "note_body"
     t.boolean "visible_to_user", default: false
     t.datetime "created_at", precision: 6, null: false
@@ -56,12 +55,12 @@ ActiveRecord::Schema.define(version: 2020_01_29_163958) do
   create_table "pets", force: :cascade do |t|
     t.integer "user_id"
     t.string "name"
-    t.date "date_of_birth"
+    t.string "date_of_birth"
     t.string "gender"
     t.string "breed"
     t.string "color"
     t.string "pending_name"
-    t.date "pending_date_of_birth"
+    t.string "pending_date_of_birth"
     t.string "pending_gender"
     t.string "pending_breed"
     t.string "pending_color"
@@ -82,7 +81,7 @@ ActiveRecord::Schema.define(version: 2020_01_29_163958) do
     t.integer "employee_id"
     t.string "task_title"
     t.text "task_body"
-    t.date "date_created"
+    t.string "date_created"
     t.boolean "task_completed", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -91,19 +90,19 @@ ActiveRecord::Schema.define(version: 2020_01_29_163958) do
   create_table "users", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
-    t.date "date_of_birth"
+    t.string "date_of_birth"
     t.string "street_address"
+    t.string "street_city"
     t.string "street_state"
     t.integer "street_zipcode"
-    t.integer "phone_number"
-    t.string "phone_number_type"
+    t.string "phone_number"
     t.string "email"
     t.integer "driver_license"
     t.string "username"
     t.string "password_digest"
     t.string "pending_first_name"
     t.string "pending_last_name"
-    t.date "pending_date_of_birth"
+    t.string "pending_date_of_birth"
     t.string "pending_address"
     t.integer "pending_phone_number"
     t.string "pending_email"

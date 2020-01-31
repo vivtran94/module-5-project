@@ -33,7 +33,7 @@ export class PublicNavBar extends React.Component {
                             </Dropdown.Menu>
                             </Dropdown>
                         </div>
-                        <Link className="item" to="/signup">Sign Up</Link>
+                        <Link className="ui teal button" to="/signup">Sign Up</Link>
                     </div>
                 </div>
 

@@ -3,12 +3,12 @@ class CreateUser < ActiveRecord::Migration[6.0]
     create_table :users do |t|
       t.string :first_name
       t.string :last_name
-      t.date :date_of_birth
+      t.string :date_of_birth
       t.string :street_address
+      t.string :street_city
       t.string :street_state
       t.integer :street_zipcode
-      t.integer :phone_number
-      t.string :phone_number_type
+      t.string :phone_number
       t.string :email
       t.integer :driver_license
       t.string :username
@@ -16,7 +16,7 @@ class CreateUser < ActiveRecord::Migration[6.0]
 
       t.string :pending_first_name, default: nil
       t.string :pending_last_name, default: nil
-      t.date :pending_date_of_birth, default: nil
+      t.string :pending_date_of_birth, default: nil
       t.string :pending_address, default: nil
       t.integer :pending_phone_number, default: nil
       t.string :pending_email, default: nil

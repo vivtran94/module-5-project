@@ -1,42 +1,55 @@
 import React from 'react';
 import {history} from '../history';
+import {useDispatch, useSelector} from 'react-redux'
 
-export class EmployeeLoginForm extends React.Component {
+export function EmployeeLoginForm() {
 
-    state = ({
-        usernameInput: "",
-        passwordInput: "",
-        errorMessage: "",
-    })
+    const dispatch = useDispatch()
+    const usernameInput = useSelector(state => state.usernameInput)
+    const passwordInput = useSelector(state => state.passwordInput)
 
-    render() {
-        return (
-            <div>
-                <form className="ui form" >
-                    <div className="field">
-                        <label>Username</label>
-                        <input type="text" placeholder="Username"
-                        onChange={event => this.setState({ usernameInput: event.target.value })}
-                        value={this.state.usernameInput}/>
-                    </div>
-                    <div className="field">
-                        <label>Password</label>
-                        <input type="password" placeholder="Password" 
-                        onChange={event => this.setState({ passwordInput: event.target.value })}
-                        value={this.state.passwordInput}/>
-                    </div>
-                    <div >
-                        {this.state.errorMessage.length > 1 ? 
-                        <p className="ui pointing red basic label">{this.state.errorMessage}</p>
-                        :
-                        null
-                        }
-                        </div>
-                    <div className="ui pink button" onClick={this.handleSubmit}>Log In</div>
-
-                </form>
-            </div>
-
-        )
+    function handleSubmit(event) {
+        event.preventDefault()
+        fetch('http://localhost:3000/employees/login', {
+            method: 'POST',
+            headers: { 
+                'Content-Type' : 'application/json'}, 
+            body: JSON.stringify({
+                username: usernameInput,
+                password: passwordInput
+            })
+        })
+            .then(response => response.json())
+            .then(response => {
+                
+                if (response.failed) {
+                    console.log(response.message)
+                } else {
+                    dispatch({ type: 'STORE_CURRENT_EMPLOYEE', payload: response.employee})
+                    localStorage.setItem("token", response.token)
+                    history.push('/employee/home')
+                }
+            })
     }
+
+    
+    return (
+        <div>
+            <form className="ui form" >
+                <div className="field">
+                    <label>Username</label>
+                    <input type="text" placeholder="Username"
+                    onChange={event => dispatch({ type: 'STORE_USERNAME_INPUT', payload: event.target.value})}/>
+                </div>
+                <div className="field">
+                    <label>Password</label>
+                    <input type="password" placeholder="Password" 
+                    onChange={event => dispatch({ type: 'STORE_PASSWORD_INPUT', payload: event.target.value})}/>
+                </div>
+                <div className="ui pink button" onClick={event=>handleSubmit(event)}>Log In</div>
+            </form>
+        </div>
+
+    )
 }
+
