@@ -1,8 +1,8 @@
 import React, {useEffect} from 'react';
-import {useDispatch} from 'react-redux'
 import {Router, Route, Redirect, Switch} from 'react-router-dom';
 import {history} from './history.js';
 import {PrivateRoute} from './PrivateRoute'
+import {useDispatch} from 'react-redux'
 import 'semantic-ui-css/semantic.min.css'
 
 import {PublicHomePage} from './components/PublicHomePage'
@@ -12,14 +12,13 @@ import {SignUpForm} from './components/SignUpForm'
 import {PetPortalProfilePage} from './components/PetPortalProfilePage'
 import {EmployeeHomePage} from './components/EmployeeHomePage'
 import {AddPetForm} from './components/AddPetForm'
-import {RequestApptForm} from './components/RequestApptForm.js';
-import {AppointmentList} from './components/AppointmentList.js';
-import {TaskList} from './components/TaskList.js';
+import {MakeApptForm} from './components/MakeApptForm';
+import {AppointmentList} from './components/AppointmentList';
+import {TaskList} from './components/TaskList';
 
 export default function App() {
 
   const dispatch = useDispatch()
-
 
   useEffect(() => {
     fetch('http://localhost:3000/get_user', {
@@ -27,11 +26,10 @@ export default function App() {
           Authorization: `Bearer ${localStorage.token}`
       }
     })
-      .then(res => res.json())
-      .then(response => dispatch({ type: 'STORE_CURRENT_USER', payload: response}));
-  }, [])
-
-
+      .then(response => response.json())
+      .then(response => 
+        dispatch({ type: 'STORE_CURRENT_USER', payload: response}))
+}, [])
 
   return (
     <div>
@@ -45,16 +43,11 @@ export default function App() {
           <Route exact path='/employee/home' component={EmployeeHomePage}/>
           <Route exact path='/addpet' component={AddPetForm}/>
           <Route exact path='/myappointments' component={AppointmentList}/>
-          <Route exact path='/requestappt' component={RequestApptForm}/>
+          <Route exact path='/makeappt' component={MakeApptForm}/>
           <Route exact path='/mytasks' component={TaskList}/>
         </Switch>
       </Router>
-      
-
-
-
     </div>
-
   );
 }
 

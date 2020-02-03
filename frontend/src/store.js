@@ -1,10 +1,27 @@
 import {createStore} from 'redux'
 
 const initialState = {
-    usernameInput: "",
-    passwordInput: "",
+    usernameInput: '',
+    passwordInput: '',
     currentUser: null,
-    currentEmployee: null
+    currentEmployee: null,
+    allEmployees: null,
+    currentPet: null,
+    
+    petForm: {
+        name: '',
+        dateOfBirth: '',
+        gender: '',
+        breed: '',
+        color: '',
+    },
+
+    apptForm: {
+        employee_id: '',
+        date: '',
+        start_time: '',
+        end_time: ''
+    }
 }
 
 const reducer = (currentState, action) => {
@@ -28,6 +45,32 @@ const reducer = (currentState, action) => {
             return {
                 ...currentState,
                 currentEmployee: action.payload
+            }
+        case 'STORE_PET_FORM' :
+            return {
+                ...currentState,
+                petForm: {
+                    ...currentState.petForm, 
+                    [action.key]: action.payload
+                }
+            }
+        case 'STORE_APPT_FORM' :
+            return {
+                ...currentState,
+                apptForm: {
+                    ...currentState.apptForm, 
+                    [action.key]: action.payload
+                }
+            }
+        case 'STORE_ALL_EMPLOYEES' :
+            return {
+                ...currentState,
+                allEmployees: action.payload
+            }
+        case 'CURRENT_PET' :
+            return {
+                ...currentState,
+                currentPet: action.payload
             }
 
     }

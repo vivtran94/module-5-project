@@ -4,13 +4,10 @@ import {Link} from 'react-router-dom';
 
 export function EmployeeNavBar() {
     return (
-        <div className="ui menu">
+        <div className="ui violet three item inverted menu">
             <Link className="item" to='/search'>Search</Link>
-            <div className="item">Appointments</div>
-            <div className="item">Task</div>
-            <div className="right menu">
-                <div className="ui pink button">Log Out</div>
-            </div>
+            <Link className="item" to='/myappointments'>Appointments</Link>
+            <Link className="item" to='/mytasks'>Task</Link>
         </div>
     )
 }

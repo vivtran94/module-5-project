@@ -1,9 +1,12 @@
 import React from 'react';
-import {useSelector} from 'react-redux'
-import {Grid, Segment, Table} from 'semantic-ui-react'
+import {Grid, Segment, Table, Icon, Header, Divider} from 'semantic-ui-react'
 import corgiPuppy from '../images/corgi_puppy.jpg'
+import {Link} from 'react-router-dom';
+import {useDispatch} from 'react-redux'
 
-export function PetCard() {
+export function PetCard(props) {
+
+    const dispatch = useDispatch()
 
     return (
         
@@ -17,30 +20,35 @@ export function PetCard() {
                         <Table definition>
                             <Table.Body>
                                 <Table.Row>
-                                    <Table.Cell width={4}>NAME</Table.Cell>
-                                    <Table.Cell>NAME HERE</Table.Cell>
+                                    <Table.Cell width={4}>Name</Table.Cell>
+                                    <Table.Cell>{props.pet.name}</Table.Cell>
                                 </Table.Row>
                                 <Table.Row>
-                                    <Table.Cell>DATE OF BIRTH</Table.Cell>
-                                    <Table.Cell>DATE OF BIRTH HERE</Table.Cell>
+                                    <Table.Cell>Date of Birth</Table.Cell>
+                                    <Table.Cell>{props.pet.date_of_birth}</Table.Cell>
                                 </Table.Row>
                                 <Table.Row>
-                                    <Table.Cell>GENDER</Table.Cell>
-                                    <Table.Cell>GENDER HERE</Table.Cell>
+                                    <Table.Cell>Gender</Table.Cell>
+                                    <Table.Cell>{props.pet.gender}</Table.Cell>
                                 </Table.Row>
                                 <Table.Row>
-                                    <Table.Cell>BREED</Table.Cell>
-                                    <Table.Cell>BREED HERE</Table.Cell>
+                                    <Table.Cell>Breed</Table.Cell>
+                                    <Table.Cell>{props.pet.breed}</Table.Cell>
                                 </Table.Row>
                                 <Table.Row>
-                                    <Table.Cell>COLOR</Table.Cell>
-                                    <Table.Cell>COLOR HERE</Table.Cell>
+                                    <Table.Cell>Color</Table.Cell>
+                                    <Table.Cell>{props.pet.color}</Table.Cell>
                                 </Table.Row>
                             </Table.Body>
                         </Table>
                     </Grid.Column>
                 </Grid.Row>
             </Grid>
+            <Divider horizontal>
+                <Header as='h4'>
+                    <Link to='/makeappt' onClick={()=> dispatch({ type: 'CURRENT_PET', payload: props.pet})}><Icon name="calendar plus outline"/>{`Make an appointment for ${props.pet.name}`}</Link>
+                </Header>
+            </Divider>
         </div>
     )
 }

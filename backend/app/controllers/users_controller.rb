@@ -26,7 +26,9 @@ class UsersController < ApplicationController
         user = User.find_by({username: params[:username]})
         token = JWT.encode( { id: user.id, role: 'user' }, 'YOUR SECRET')
         if user.authenticate(params[:password])
-            render json: {user: user, token: token}
+            render json: {user: user, token: token}, include: [ pets: {
+                include: [ :appointments ]
+            } ]
         else
             render json: { failed: true, message: 'Incorrect username or password'}
         end
@@ -35,9 +37,10 @@ class UsersController < ApplicationController
 
     def get_user
         user = self.current_user
-        render( json: user, include: [ pets: {
-            include: [ :appointment ]
-        } ] )
+        token = JWT.encode( { id: user.id, role: 'user' }, 'YOUR SECRET')
+        render json: {user: user, tocken: token}, include: [ pets: {
+            include: [ :appointments ]
+        } ] 
     end
 
 end
