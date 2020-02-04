@@ -6,6 +6,9 @@ class Employee < ActiveRecord::Base
     has_many :notes
     has_many :pets, through: :notes
 
+    has_many :tasks
+    has_many :users, through: :tasks
+
     has_secure_password
     
   end

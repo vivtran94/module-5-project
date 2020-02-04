@@ -22,7 +22,6 @@ export class PublicNavBar extends React.Component {
                 <div className="ui menu">
                     <Link className="item" to="/">Home</Link>
                     <Link className="item" to="/services">Services</Link>
-                    <Link className="item" to="/meetourstaff">Meet Our Staff</Link>
                     <div className="right menu">
                         <div>
                         <Dropdown text='Login' pointing className='link item'>

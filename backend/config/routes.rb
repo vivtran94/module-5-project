@@ -3,9 +3,11 @@ Rails.application.routes.draw do
   resources :employees
   resources :pets
   resources :appointments
+  resources :tasks
 
   post('/login', { to: 'users#login'})
   get('/get_user', { to: 'users#get_user'})
   post('/employees/login', { to: 'employees#login'})
+  patch('/employee/appointments/:id', { to: 'appointments#employee_confirms'})
   
 end

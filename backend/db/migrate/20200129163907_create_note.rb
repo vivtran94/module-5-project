@@ -3,7 +3,7 @@ class CreateNote < ActiveRecord::Migration[6.0]
     create_table :notes do |t|
       t.integer :pet_id
       t.integer :employee_id
-      t.string :date
+      t.string :note_title
       t.text :note_body
       t.boolean :visible_to_user, default: false
       t.timestamps

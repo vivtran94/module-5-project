@@ -1,6 +1,5 @@
 import React from 'react';
 import {history} from '../history';
-import {PetPortalNavBar} from './PetPortalNavBar'
 import {useDispatch, useSelector} from 'react-redux'
 
 
@@ -45,7 +44,6 @@ export function AddPetForm() {
     
     return (
         <div>
-            <PetPortalNavBar/>
             <div style={{ "maxWidth": "400px", margin: "auto"}}>
                 <h1>Add Pet Form</h1>
                 <form className="ui form" >
