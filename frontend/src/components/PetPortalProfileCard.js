@@ -32,7 +32,6 @@ export function PetPortalProfileCard() {
 	};
 
 	useEffect(() => {
-		// console.log("I am from useeffect!");
 		if (localStorage.token != null) {
 			fetch("http://localhost:3000/get_user", {
 				headers: {
@@ -53,8 +52,7 @@ export function PetPortalProfileCard() {
 	// 	return tasks_for_user;
 	// }
 
-	if (user === null || user.user.tasks === null) return <h1>Loading</h1>;
-	debugger;
+	if (user === null) return <h1>Loading</h1>;
 	return (
 		<div style={{ maxWidth: "1000px", margin: "auto" }}>
 			<Grid columns={3} stretched>

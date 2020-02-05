@@ -45,4 +45,16 @@ class EmployeesController < ApplicationController
         render json: employees
     end
 
+    def get_employee
+        user = self.current_user
+        token = JWT.encode( { id: employee.id, role: 'employee' }, 'YOUR SECRET')
+        
+        render json: {employee: employee, token: token},
+            include: [ appointments: { 
+                include: [ :pet ]
+            }, tasks: { 
+                include: [ :user]
+            } ] 
+    end
+
 end

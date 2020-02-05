@@ -9,5 +9,6 @@ Rails.application.routes.draw do
   get('/get_user', { to: 'users#get_user'})
   post('/employees/login', { to: 'employees#login'})
   patch('/employee/appointments/:id', { to: 'appointments#employee_confirms'})
+  get('/get_employee', { to: 'employees#get_employee'})
   
 end
