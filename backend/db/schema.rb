@@ -16,8 +16,7 @@ ActiveRecord::Schema.define(version: 2020_01_29_163958) do
     t.integer "pet_id"
     t.integer "employee_id"
     t.string "date"
-    t.time "start_time"
-    t.time "end_time"
+    t.string "start_time"
     t.boolean "user_confirmed", default: false
     t.boolean "employee_confirmed", default: false
     t.datetime "created_at", precision: 6, null: false
@@ -45,7 +44,7 @@ ActiveRecord::Schema.define(version: 2020_01_29_163958) do
   create_table "notes", force: :cascade do |t|
     t.integer "pet_id"
     t.integer "employee_id"
-    t.string "date"
+    t.string "note_title"
     t.text "note_body"
     t.boolean "visible_to_user", default: false
     t.datetime "created_at", precision: 6, null: false
@@ -81,8 +80,9 @@ ActiveRecord::Schema.define(version: 2020_01_29_163958) do
     t.integer "employee_id"
     t.string "task_title"
     t.text "task_body"
-    t.string "date_created"
     t.boolean "task_completed", default: false
+    t.boolean "user_sent", default: false
+    t.boolean "employee_sent", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

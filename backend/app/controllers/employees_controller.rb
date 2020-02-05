@@ -28,7 +28,12 @@ class EmployeesController < ApplicationController
         employee = Employee.find_by({username: params[:username]})
         token = JWT.encode( { id: employee.id, role: 'employee'}, 'YOUR SECRET')
         if employee.authenticate(params[:password])
-            render json: {employee: employee, token: token}
+            render json: {employee: employee, token: token},
+                include: [ appointments: { 
+                    include: [ :pet ]
+                }, tasks: { 
+                    include: [ :user]
+                } ]
         else
             render json: { failed: true, message: 'Incorrect username or password'}
         end

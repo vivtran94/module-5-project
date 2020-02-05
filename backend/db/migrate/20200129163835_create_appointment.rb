@@ -4,8 +4,7 @@ class CreateAppointment < ActiveRecord::Migration[6.0]
       t.integer :pet_id
       t.integer :employee_id
       t.string :date
-      t.time :start_time
-      t.time :end_time
+      t.string :start_time
       t.boolean :user_confirmed, default: false
       t.boolean :employee_confirmed, default: false
       t.timestamps

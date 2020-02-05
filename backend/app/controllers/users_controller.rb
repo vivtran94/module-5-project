@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 
     def create 
+        token = JWT.encode( { id: user.id, role: 'user' }, 'YOUR SECRET')
         if User.find_by({ username: params[:username]})
             render json: { failed: true, message: "Username already taken. Try another one."}
         else
@@ -18,7 +19,7 @@ class UsersController < ApplicationController
                 username: params[:username],
                 password: params[:password]
             )
-            render json: {user: user, token: JWT.encode( { id: user.id, role: 'user' }, 'YOUR SECRET')}
+            render json: {user: user, token: token}
         end
     end
 
@@ -26,9 +27,10 @@ class UsersController < ApplicationController
         user = User.find_by({username: params[:username]})
         token = JWT.encode( { id: user.id, role: 'user' }, 'YOUR SECRET')
         if user.authenticate(params[:password])
-            render json: {user: user, token: token}, include: [ pets: {
-                include: [ :appointments ]
-            } ]
+            render json: {user: user, token: token}, 
+                include: [ pets: {
+                    include: [ :appointments, :notes ]
+                }, tasks: {} ] 
         else
             render json: { failed: true, message: 'Incorrect username or password'}
         end
@@ -38,9 +40,15 @@ class UsersController < ApplicationController
     def get_user
         user = self.current_user
         token = JWT.encode( { id: user.id, role: 'user' }, 'YOUR SECRET')
-        render json: {user: user, tocken: token}, include: [ pets: {
-            include: [ :appointments ]
-        } ] 
+        render json: {user: user, token: token}, 
+            include: [ pets: {
+                include: [ :appointments, :notes ]
+            }, tasks: {} ] 
+    end
+
+    def index
+        users = User.all
+        render json: users
     end
 
 end
