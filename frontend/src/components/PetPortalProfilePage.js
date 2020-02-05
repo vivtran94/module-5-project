@@ -11,7 +11,6 @@ export function PetPortalProfilePage() {
 	// console.log(user);
 
 	useEffect(() => {
-		// console.log("I am from useeffect!");
 		if (localStorage.token != null) {
 			fetch("http://localhost:3000/get_user", {
 				headers: {
@@ -27,7 +26,7 @@ export function PetPortalProfilePage() {
 		}
 	}, []);
 
-	if (user === null || user.pets === null) {
+	if (user === null) {
 		return <h1>Loading</h1>;
 	} else {
 		return (
@@ -41,7 +40,9 @@ export function PetPortalProfilePage() {
 						</Link>
 					</Header>
 				</Divider>
-				{user.pets ? user.pets.map(pet => <PetCard pet={pet} />) : null}
+				{user.user.pets.map(pet => (
+					<PetCard pet={pet} />
+				))}
 			</div>
 		);
 	}

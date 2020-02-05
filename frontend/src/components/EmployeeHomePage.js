@@ -6,6 +6,7 @@ import { Divider, Grid, Segment } from "semantic-ui-react";
 export function EmployeeHomePage() {
 	const dispatch = useDispatch();
 	const employee = useSelector(state => state.currentEmployee);
+	console.log(employee);
 
 	const employeeConfirmed = appointment => {
 		fetch(`http://localhost:3000/employee/appointments/${appointment.id}`, {
@@ -27,28 +28,23 @@ export function EmployeeHomePage() {
 		}).then(console.log("ran taskCompleted"));
 	};
 
-	let tasks_for_employee = employee.tasks.filter(
-		task => task.user_sent === true
-	);
+	// useEffect(() => {
+	// 	if (localStorage.token != null) {
+	// 		fetch("http://localhost:3000/get_employee", {
+	// 			headers: {
+	// 				Authorization: `Bearer ${localStorage.token}`
+	// 			}
+	// 		})
+	// 			.then(response => response.json())
+	// 			.then(response =>
+	// 				dispatch({ type: "STORE_CURRENT_EMPLOYEE", payload: response })
+	// 			);
+	// 	} else {
+	// 		console.log("cannot find token");
+	// 	}
+	// }, []);
 
-	useEffect(() => {
-		// console.log("I am from useeffect!");
-		if (localStorage.token != null) {
-			fetch("http://localhost:3000/get_user", {
-				headers: {
-					Authorization: `Bearer ${localStorage.token}`
-				}
-			})
-				.then(response => response.json())
-				.then(response =>
-					dispatch({ type: "STORE_CURRENT_USER", payload: response })
-				);
-		} else {
-			console.log("cannot find token");
-		}
-	}, []);
-
-	if (employee === null || employee.tasks === null) return <h1>Loading</h1>;
+	if (employee.employee === null) return <h1>Loading</h1>;
 
 	return (
 		<div>
@@ -58,39 +54,41 @@ export function EmployeeHomePage() {
 					<Grid.Column width={8}>
 						<Segment>
 							<h3>To Do List</h3>
-							<Divider horizontal></Divider>
-							{tasks_for_employee.map(task => (
-								<Segment
-									style={{
-										display: "flex",
-										alignItems: "baseline",
-										justifyContent: "space-between"
-									}}
-								>
-									<div>
-										<div
-											style={{
-												display: "flex",
-												alignItems: "baseline"
-											}}
-										>
-											<span className='mini ui button'>{task.user.id}</span>
-											<span>{`${task.user.first_name} ${task.user.last_name}: ${task.task_title}`}</span>
+							<Divider></Divider>
+							{employee.employee.tasks
+								.filter(task => task.user_sent === true)
+								.map(task => (
+									<Segment
+										style={{
+											display: "flex",
+											alignItems: "baseline",
+											justifyContent: "space-between"
+										}}
+									>
+										<div>
+											<div
+												style={{
+													display: "flex",
+													alignItems: "baseline"
+												}}
+											>
+												<span className='mini ui button'>{task.user.id}</span>
+												<span>{`${task.user.first_name} ${task.user.last_name}: ${task.task_title}`}</span>
+											</div>
+											<p>{task.task_body}</p>
 										</div>
-										<p>{task.task_body}</p>
-									</div>
-									{task.task_completed === true ? (
-										<button className='mini ui green button'>Complete</button>
-									) : (
-										<button
-											className='mini ui button'
-											onClick={() => taskCompleted(task)}
-										>
-											Complete
-										</button>
-									)}
-								</Segment>
-							))}
+										{task.task_completed === true ? (
+											<button className='mini ui green button'>Complete</button>
+										) : (
+											<button
+												className='mini ui button'
+												onClick={() => taskCompleted(task)}
+											>
+												Complete
+											</button>
+										)}
+									</Segment>
+								))}
 						</Segment>
 					</Grid.Column>
 					<Grid.Column width={6}>
@@ -98,7 +96,7 @@ export function EmployeeHomePage() {
 							<h3>Appointments</h3>
 							<Divider></Divider>
 							<div>
-								{employee.appointments.map(appointment => (
+								{employee.employee.appointments.map(appointment => (
 									<Segment
 										style={{
 											display: "flex",
