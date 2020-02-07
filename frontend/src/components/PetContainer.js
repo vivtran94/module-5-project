@@ -24,8 +24,7 @@ export function PetContainer(props) {
 							onClick={() => {
 								showMakeApptForm("mini");
 								dispatch({ type: "CURRENT_PET", payload: props.pet });
-							}}
-						>
+							}}>
 							<Icon circular name='calendar plus outline' />
 							{`Make an appointment for ${props.pet.name}`}
 						</h4>

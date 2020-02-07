@@ -18,8 +18,7 @@ export function PetAppointmentCard(props) {
 				display: "flex",
 				justifyContent: "space-between",
 				alignItems: "center"
-			}}
-		>
+			}}>
 			<div>
 				{props.appointment.date} at {props.appointment.start_time}
 			</div>
