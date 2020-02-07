@@ -5,6 +5,8 @@ import { Input, Segment, Grid, Divider, Icon, Modal } from "semantic-ui-react";
 import corgiPuppy from "../images/corgi_puppy.jpg";
 import { AddNoteForm } from "./AddNoteForm";
 import { NoteCard } from "./NoteCard";
+import { EmployeeCreateApptForm } from "./EmployeeCreateApptForm";
+import { EmployeeCreateTaskForm } from "./EmployeeCreateTaskForm";
 
 export function SearchPage() {
 	const dispatch = useDispatch();
@@ -16,15 +18,6 @@ export function SearchPage() {
 	const search = value => {
 		dispatch({ type: "STORE_SEARCH_VALUE", payload: value });
 		dispatch({ type: "FILTER_ALL_USERS" });
-	};
-	const makeNoteVisible = note => {
-		fetch(`http://localhost:3000/notes/${note.id}`, {
-			method: "PATCH",
-			headers: {
-				Authorization: `Bearer ${localStorage.token}`,
-				"Content-Type": "application/json"
-			}
-		}).then(console.log("ran employeeConfirmed"));
 	};
 
 	const showNote = size => {
@@ -39,8 +32,30 @@ export function SearchPage() {
 		dispatch({ type: "CHANGE_MODAL", key: "open", payload: true });
 	};
 
+	const employeeCreateTask = size => {
+		dispatch({ type: "CHANGE_MODAL", key: "display", payload: "employeetask" });
+		dispatch({ type: "CHANGE_MODAL", key: "size", payload: size });
+		dispatch({ type: "CHANGE_MODAL", key: "open", payload: true });
+	};
+
+	const employeeCreateAppt = size => {
+		dispatch({ type: "CHANGE_MODAL", key: "display", payload: "employeeappt" });
+		dispatch({ type: "CHANGE_MODAL", key: "size", payload: size });
+		dispatch({ type: "CHANGE_MODAL", key: "open", payload: true });
+	};
+
 	const closeModal = () => {
 		dispatch({ type: "CHANGE_MODAL", key: "open", payload: false });
+	};
+
+	const makeNoteVisible = note => {
+		fetch(`http://localhost:3000/notes/${note.id}`, {
+			method: "PATCH",
+			headers: {
+				Authorization: `Bearer ${localStorage.token}`,
+				"Content-Type": "application/json"
+			}
+		});
 	};
 
 	useEffect(() => {
@@ -51,7 +66,7 @@ export function SearchPage() {
 		})
 			.then(response => response.json())
 			.then(response => dispatch({ type: "ALL_USERS", payload: response }));
-	}, []);
+	}, [dispatch]);
 
 	if (allUsers === null) return <h1>Loading</h1>;
 	return (
@@ -92,6 +107,7 @@ export function SearchPage() {
 										>
 											<span className='mini ui button'>{selectedUser.id}</span>
 											<span>{`${selectedUser.last_name.toUpperCase()}, ${selectedUser.first_name.toUpperCase()}`}</span>
+											<button onClick={() => employeeCreateTask("mini")}>Create Task</button>
 										</div>
 									</Segment>
 								</Grid.Row>
@@ -122,13 +138,13 @@ export function SearchPage() {
 								<Segment>
 									<Grid.Row>
 										<Segment.Group horizontal>
-											<Segment>
-												<div
-													style={{
-														display: "flex",
-														alignItems: "baseline"
-													}}
-												>
+											<Segment
+												style={{
+													display: "flex",
+													alignItems: "center"
+												}}
+											>
+												<div>
 													<span>
 														{pet.gender === "M" ? (
 															<Icon circular name='mars' />
@@ -141,6 +157,14 @@ export function SearchPage() {
 															pet.date_of_birth
 														})`}
 													</span>
+													<button
+														onClick={() => {
+															employeeCreateAppt("mini");
+															dispatch({ type: "CURRENT_PET", payload: pet });
+														}}
+													>
+														Create Appointment
+													</button>
 												</div>
 											</Segment>
 											<Segment>
@@ -206,10 +230,27 @@ export function SearchPage() {
 			</Grid>
 
 			<Modal size={modal.size} open={modal.open} onClose={() => closeModal()}>
-				<Modal.Header>{modal.display === "addnote" ? "Add a Note" : "Medical Note"}</Modal.Header>
-				<Modal.Content>
-					{modal.display === "addnote" ? <AddNoteForm /> : <NoteCard />}
-				</Modal.Content>
+				{modal.display === "addnote" || modal.display === "note" ? (
+					<Modal.Header>{modal.display === "addnote" ? "Add a Note" : "Medical Note"}</Modal.Header>
+				) : (
+					<Modal.Header>
+						{modal.display === "employeetask" ? "Add a Task" : "Add an Appointment"}
+					</Modal.Header>
+				)}
+
+				{modal.display === "addnote" || modal.display === "note" ? (
+					<Modal.Content>
+						{modal.display === "addnote" ? <AddNoteForm /> : <NoteCard />}
+					</Modal.Content>
+				) : (
+					<Modal.Content>
+						{modal.display === "employeetask" ? (
+							<EmployeeCreateTaskForm />
+						) : (
+							<EmployeeCreateApptForm />
+						)}
+					</Modal.Content>
+				)}
 			</Modal>
 		</div>
 	);

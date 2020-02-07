@@ -1,16 +1,14 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React from "react";
+import { useSelector, useDispatch } from "react-redux";
 
-export function MakeApptForm() {
+export function EmployeeCreateApptForm() {
 	const dispatch = useDispatch();
 	const apptForm = useSelector(state => state.apptForm);
-	const allEmployees = useSelector(state => state.allEmployees);
 	const currentPet = useSelector(state => state.currentPet);
-	console.log(currentPet);
 
 	const handleSubmit = event => {
 		event.preventDefault();
-		fetch("http://localhost:3000/appointments", {
+		fetch("http://localhost:3000/employee/create_appt", {
 			method: "POST",
 			headers: {
 				Authorization: `Bearer ${localStorage.token}`,
@@ -18,7 +16,6 @@ export function MakeApptForm() {
 			},
 			body: JSON.stringify({
 				pet_id: currentPet.id,
-				employee_id: apptForm.employee_id,
 				date: apptForm.date,
 				start_time: apptForm.start_time
 			})
@@ -27,38 +24,9 @@ export function MakeApptForm() {
 			.then(dispatch({ type: "CHANGE_MODAL", key: "open", payload: false }));
 	};
 
-	useEffect(() => {
-		fetch("http://localhost:3000/employees", {
-			headers: {
-				Authorization: `Bearer ${localStorage.token}`
-			}
-		})
-			.then(response => response.json())
-			.then(response => dispatch({ type: "STORE_ALL_EMPLOYEES", payload: response }));
-	}, [dispatch]);
-
-	if (allEmployees === null) return <h1>Loading</h1>;
 	return (
 		<div>
 			<form className='ui form'>
-				<div className='field'>
-					<label>Who do you want to make an appointment with?</label>
-					<select
-						className='ui fluid dropdown'
-						onChange={event =>
-							dispatch({
-								type: "STORE_APPT_FORM",
-								key: "employee_id",
-								payload: event.target.value
-							})
-						}
-					>
-						<option value=''>Employee</option>
-						{allEmployees.map(employee => (
-							<option value={employee.id}>{employee.first_name}</option>
-						))}
-					</select>
-				</div>
 				<div className='field'>
 					<label>Appointment Date</label>
 					<input

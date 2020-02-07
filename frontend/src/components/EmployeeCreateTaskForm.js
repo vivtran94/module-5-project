@@ -1,21 +1,21 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 
-export function AddTaskForm() {
+export function EmployeeCreateTaskForm() {
 	const dispatch = useDispatch();
 	const taskForm = useSelector(state => state.taskForm);
-	const allEmployees = useSelector(state => state.allEmployees);
+	const selectedUser = useSelector(state => state.selectedUser);
 
 	const handleSubmit = event => {
 		event.preventDefault();
-		fetch("http://localhost:3000/tasks", {
+		fetch("http://localhost:3000/employee/create_task", {
 			method: "POST",
 			headers: {
 				Authorization: `Bearer ${localStorage.token}`,
 				"Content-Type": "application/json"
 			},
 			body: JSON.stringify({
-				employee_id: taskForm.employee_id,
+				user_id: selectedUser.id,
 				task_title: taskForm.title,
 				task_body: taskForm.body
 			})
@@ -24,38 +24,9 @@ export function AddTaskForm() {
 			.then(() => dispatch({ type: "CHANGE_MODAL", key: "open", payload: false }));
 	};
 
-	useEffect(() => {
-		fetch("http://localhost:3000/employees", {
-			headers: {
-				Authorization: `Bearer ${localStorage.token}`
-			}
-		})
-			.then(response => response.json())
-			.then(response => dispatch({ type: "STORE_ALL_EMPLOYEES", payload: response }));
-	}, [dispatch]);
-
-	if (allEmployees === null) return <h1>Loading</h1>;
 	return (
 		<div>
 			<form className='ui form'>
-				<div className='field'>
-					<label>Who do you want to send the task to?</label>
-					<select
-						className='ui fluid dropdown'
-						onChange={event =>
-							dispatch({
-								type: "STORE_TASK_FORM",
-								key: "employee_id",
-								payload: event.target.value
-							})
-						}
-					>
-						<option value=''>Employee</option>
-						{allEmployees.map(employee => (
-							<option value={employee.id}>{employee.first_name}</option>
-						))}
-					</select>
-				</div>
 				<div className='field'>
 					<label>Title</label>
 					<input

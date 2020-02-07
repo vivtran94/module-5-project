@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Icon, Divider, Grid, Segment, Modal } from "semantic-ui-react";
 import corgiPuppy from "../images/corgi_puppy.jpg";

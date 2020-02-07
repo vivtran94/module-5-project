@@ -6,10 +6,15 @@ Rails.application.routes.draw do
   resources :tasks
   resources :notes
 
+  # USER ROUTES
   post('/login', { to: 'users#login'})
   get('/get_user', { to: 'users#get_user'})
-  post('/employees/login', { to: 'employees#login'})
-  patch('/employee/appointments/:id', { to: 'appointments#employee_confirms'})
-  get('/get_employee', { to: 'employees#get_employee'})
   
+  
+  # EMPLOYEE ROUTES
+  post('/employees/login', { to: 'employees#login'})
+  get('/get_employee', { to: 'employees#get_employee'})
+  patch('/employee/appointments/:id', { to: 'appointments#employee_confirms_appt'})
+  post('/employee/create_task', { to: 'tasks#employee_create_task'})
+  post('/employee/create_appt', { to: 'appointments#employee_create_appt'})
 end

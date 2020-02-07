@@ -8,7 +8,6 @@ import { Link } from "react-router-dom";
 export function PetPortalProfilePage() {
 	const dispatch = useDispatch();
 	const user = useSelector(state => state.currentUser);
-	// console.log(user);
 
 	useEffect(() => {
 		if (localStorage.token != null) {
@@ -22,7 +21,7 @@ export function PetPortalProfilePage() {
 		} else {
 			console.log("cannot find token");
 		}
-	}, []);
+	}, [dispatch]);
 
 	if (user === null) {
 		return <h1>Loading</h1>;

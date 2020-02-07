@@ -28,23 +28,21 @@ export function EmployeeHomePage() {
 		}).then(console.log("ran taskCompleted"));
 	};
 
-	// useEffect(() => {
-	// 	if (localStorage.token != null) {
-	// 		fetch("http://localhost:3000/get_employee", {
-	// 			headers: {
-	// 				Authorization: `Bearer ${localStorage.token}`
-	// 			}
-	// 		})
-	// 			.then(response => response.json())
-	// 			.then(response =>
-	// 				dispatch({ type: "STORE_CURRENT_EMPLOYEE", payload: response })
-	// 			);
-	// 	} else {
-	// 		console.log("cannot find token");
-	// 	}
-	// }, []);
+	useEffect(() => {
+		if (localStorage.token != null) {
+			fetch("http://localhost:3000/get_employee", {
+				headers: {
+					Authorization: `Bearer ${localStorage.token}`
+				}
+			})
+				.then(response => response.json())
+				.then(response => dispatch({ type: "STORE_CURRENT_EMPLOYEE", payload: response }));
+		} else {
+			console.log("cannot find token");
+		}
+	}, [dispatch]);
 
-	if (employee.employee === null) return <h1>Loading</h1>;
+	if (employee === null) return <h1>Loading</h1>;
 
 	return (
 		<div>
@@ -80,10 +78,7 @@ export function EmployeeHomePage() {
 										{task.task_completed === true ? (
 											<button className='mini ui green button'>Complete</button>
 										) : (
-											<button
-												className='mini ui button'
-												onClick={() => taskCompleted(task)}
-											>
+											<button className='mini ui button' onClick={() => taskCompleted(task)}>
 												Complete
 											</button>
 										)}
@@ -105,8 +100,7 @@ export function EmployeeHomePage() {
 										}}
 									>
 										<div>
-											{appointment.date} at {appointment.start_time} with{" "}
-											{appointment.pet.name}
+											{appointment.date} at {appointment.start_time} with {appointment.pet.name}
 										</div>
 										{appointment.user_confirmed === true &&
 										appointment.employee_confirmed === true ? (
