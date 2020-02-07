@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { PetPortalProfileCard } from "./PetPortalProfileCard";
-import { PetCard } from "./PetCard";
+import { PetContainer } from "./PetContainer";
 import { Divider, Header, Icon } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 
@@ -38,7 +38,7 @@ export function PetPortalProfilePage() {
 					</Header>
 				</Divider>
 				{user.user.pets.map(pet => (
-					<PetCard pet={pet} />
+					<PetContainer pet={pet} />
 				))}
 			</div>
 		);
