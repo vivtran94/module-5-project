@@ -11,12 +11,16 @@ class ApplicationController < ActionController::API
             puts method
             puts token
             if method === 'Bearer'
+                puts "in here"
                 payload, header = JWT.decode(token, 'YOUR SECRET')
+                puts payload["role"]
                 if(payload["role"] == 'employee')
-                    Employee.find(payload["id"])
+                    puts payload["id"]
+                    puts Employee.find(payload["id"])
+                    return Employee.find(payload["id"])
                 end
                 if(payload["role"] == 'user')
-                    User.find(payload["id"])
+                    return User.find(payload["id"])
                 end
             end
         rescue

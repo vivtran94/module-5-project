@@ -2,7 +2,7 @@ class TasksController < ApplicationController
 
 
     def create
-        user = self.current_user
+        user = current_user
         task = Task.create(
             user: user,
             employee_id: params[:employee_id],

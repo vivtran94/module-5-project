@@ -9,6 +9,9 @@ const initialState = {
 	allUsers: null,
 	currentPet: null,
 	selectedUser: null,
+	searchValue: "",
+	searchResult: [],
+	selectedNote: null,
 
 	petForm: {
 		name: "",
@@ -36,9 +39,9 @@ const initialState = {
 		body: ""
 	},
 
-	search: {
-		value: "",
-		result: []
+	noteForm: {
+		title: "",
+		body: ""
 	}
 };
 
@@ -111,18 +114,43 @@ const reducer = (currentState, action) => {
 				...currentState,
 				allUsers: action.payload
 			};
-		case "CHANGE_SEARCH":
+		case "STORE_SEARCH_VALUE":
 			return {
 				...currentState,
-				search: {
-					...currentState.search,
-					[action.key]: action.payload
-				}
+				searchValue: action.payload.toLowerCase()
 			};
-		case "SELECTED_USER":
+		case "FILTER_ALL_USERS":
+			if (currentState.searchValue === "") {
+				return {
+					...currentState,
+					searchResult: []
+				};
+			}
+			return {
+				...currentState,
+				searchResult: currentState.allUsers.filter(
+					user =>
+						user.first_name.toLowerCase().includes(currentState.searchValue) ||
+						user.last_name.toLowerCase().includes(currentState.searchValue)
+				)
+			};
+		case "STORE_SELECTED_USER":
 			return {
 				...currentState,
 				selectedUser: action.payload
+			};
+		case "STORE_SELECTED_NOTE":
+			return {
+				...currentState,
+				selectedNote: action.payload
+			};
+		case "STORE_NOTE_FORM":
+			return {
+				...currentState,
+				noteForm: {
+					...currentState.noteForm,
+					[action.key]: action.payload
+				}
 			};
 	}
 	return currentState;

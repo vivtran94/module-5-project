@@ -76,8 +76,8 @@ export function AddTaskForm() {
 				</div>
 				<div className='field'>
 					<label>Message</label>
-					<input
-						type='text'
+					<textarea
+						rows='5'
 						placeholder='Enter your message here...'
 						onChange={event =>
 							dispatch({
@@ -86,7 +86,7 @@ export function AddTaskForm() {
 								payload: event.target.value
 							})
 						}
-					/>
+					></textarea>
 				</div>
 				<div className='ui blue button' onClick={event => handleSubmit(event)}>
 					Send

@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :pets
   resources :appointments
   resources :tasks
+  resources :notes
 
   post('/login', { to: 'users#login'})
   get('/get_user', { to: 'users#get_user'})

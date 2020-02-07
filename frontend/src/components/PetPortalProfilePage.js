@@ -18,9 +18,7 @@ export function PetPortalProfilePage() {
 				}
 			})
 				.then(response => response.json())
-				.then(response =>
-					dispatch({ type: "STORE_CURRENT_USER", payload: response })
-				);
+				.then(response => dispatch({ type: "STORE_CURRENT_USER", payload: response }));
 		} else {
 			console.log("cannot find token");
 		}

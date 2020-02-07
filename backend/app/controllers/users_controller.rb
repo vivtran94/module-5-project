@@ -38,7 +38,7 @@ class UsersController < ApplicationController
     end
 
     def get_user
-        user = self.current_user
+        user = current_user
         token = JWT.encode( { id: user.id, role: 'user' }, 'YOUR SECRET')
         render json: {user: user, token: token}, 
             include: [ pets: {
@@ -48,8 +48,9 @@ class UsersController < ApplicationController
 
     def index
         users = User.all
-        render json: users
-
+        render json: users, 
+            include: [ pets: {
+                include: [ :appointments, :notes ]}]
     end
 
 end

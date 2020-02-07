@@ -2,7 +2,7 @@ class AppointmentsController < ApplicationController
 
 
     def create
-        user = self.current_user
+        user = current_user
         appointment = Appointment.create(
             pet_id: params[:pet_id],
             employee_id: params[:employee_id],

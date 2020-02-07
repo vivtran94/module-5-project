@@ -31,15 +31,53 @@ user1 = User.create(
     phone_number: "932-394-3920",
     email: "jack@gmail.com",
     driver_license: "1234567890",
-    username: "123",
-    password: "123"
+    username: "1",
+    password: "1"
 )
 
+user2 = User.create(
+    first_name: "Kungfu",
+    last_name: "Panda",
+    date_of_birth: "06-15-1996",
+    street_address: "11903 Clear Creek Lane",
+    street_city: "Houston",
+    street_state: "TX",
+    street_zipcode: "77093",
+    phone_number: "932-394-3920",
+    email: "jack@gmail.com",
+    driver_license: "1234567890",
+    username: "2",
+    password: "2"
+)
+
+user3 = User.create(
+    first_name: "Teddy",
+    last_name: "Bear",
+    date_of_birth: "06-15-1996",
+    street_address: "11903 Clear Creek Lane",
+    street_city: "Houston",
+    street_state: "TX",
+    street_zipcode: "77093",
+    phone_number: "932-394-3920",
+    email: "jack@gmail.com",
+    driver_license: "1234567890",
+    username: "3",
+    password: "3"
+)
 pet1 = Pet.create(
     user: user1,
     name: "Jill",
     date_of_birth: "03-02-2005",
     gender: "F",
+    breed: "Terrier",
+    color: "Brown"
+)
+
+pet2 = Pet.create(
+    user: user2,
+    name: "Jerry",
+    date_of_birth: "03-02-2005",
+    gender: "M",
     breed: "Terrier",
     color: "Brown"
 )
@@ -64,4 +102,18 @@ note1 = Note.create(
     employee: admin1,
     note_title: "Annual Exam",
     note_body: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+)
+
+note2 = Note.create(
+    pet: pet1,
+    employee: admin1,
+    note_title: "Sick Visit",
+    note_body: "SICK VISIT Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+)
+
+note3 = Note.create(
+    pet: pet1,
+    employee: admin1,
+    note_title: "Surgery",
+    note_body: "SURGERY Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
 )

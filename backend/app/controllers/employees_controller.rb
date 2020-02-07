@@ -46,7 +46,7 @@ class EmployeesController < ApplicationController
     end
 
     def get_employee
-        user = self.current_user
+        user = current_user
         token = JWT.encode( { id: employee.id, role: 'employee' }, 'YOUR SECRET')
         
         render json: {employee: employee, token: token},

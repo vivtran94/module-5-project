@@ -31,27 +31,6 @@ export function PetPortalProfileCard() {
 		}).then(console.log("ran taskCompleted"));
 	};
 
-	useEffect(() => {
-		if (localStorage.token != null) {
-			fetch("http://localhost:3000/get_user", {
-				headers: {
-					Authorization: `Bearer ${localStorage.token}`
-				}
-			})
-				.then(response => response.json())
-				.then(response =>
-					dispatch({ type: "STORE_CURRENT_USER", payload: response })
-				);
-		} else {
-			console.log("cannot find token");
-		}
-	}, []);
-
-	// if (user.user.tasks != null) {
-	// 	let tasks_for_user = user.user.tasks.filter(task => task.employee_sent === true) ;
-	// 	return tasks_for_user;
-	// }
-
 	if (user === null) return <h1>Loading</h1>;
 	return (
 		<div style={{ maxWidth: "1000px", margin: "auto" }}>
@@ -112,22 +91,15 @@ export function PetPortalProfileCard() {
 															alignItems: "baseline"
 														}}
 													>
-														<span className='mini ui button'>
-															{task.user.user.id}
-														</span>
+														<span className='mini ui button'>{task.user.user.id}</span>
 														<span>{`${task.user.user.first_name} ${task.user.user.last_name}: ${task.task_title}`}</span>
 													</div>
 													<p>{task.task_body}</p>
 												</div>
 												{task.task_completed === true ? (
-													<button className='mini ui green button'>
-														Complete
-													</button>
+													<button className='mini ui green button'>Complete</button>
 												) : (
-													<button
-														className='mini ui button'
-														onClick={() => taskCompleted(task)}
-													>
+													<button className='mini ui button' onClick={() => taskCompleted(task)}>
 														Complete
 													</button>
 												)}
@@ -144,9 +116,7 @@ export function PetPortalProfileCard() {
 
 			<Modal size={modal.size} open={modal.open} onClose={() => closeModal()}>
 				<Modal.Header>
-					{modal.display === "apptform"
-						? "Request an Appointment"
-						: "Send a Task"}
+					{modal.display === "apptform" ? "Request an Appointment" : "Send a Task"}
 				</Modal.Header>
 				<Modal.Content>
 					{modal.display === "apptform" ? <MakeApptForm /> : <AddTaskForm />}
