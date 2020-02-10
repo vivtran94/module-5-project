@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-export function MakeApptForm() {
+export function AddApptForm() {
 	const dispatch = useDispatch();
 	const apptForm = useSelector(state => state.apptForm);
 	const allEmployees = useSelector(state => state.allEmployees);
@@ -45,14 +45,7 @@ export function MakeApptForm() {
 					<label>Who do you want to make an appointment with?</label>
 					<select
 						className='ui fluid dropdown'
-						onChange={event =>
-							dispatch({
-								type: "STORE_APPT_FORM",
-								key: "employee_id",
-								payload: event.target.value
-							})
-						}
-					>
+						onChange={event => dispatch({ type: "STORE_APPT_FORM", key: "employee_id", payload: event.target.value })}>
 						<option value=''>Employee</option>
 						{allEmployees.map(employee => (
 							<option value={employee.id}>{employee.first_name}</option>
@@ -64,9 +57,7 @@ export function MakeApptForm() {
 					<input
 						type='text'
 						placeholder='MM-DD-YYYY'
-						onChange={event =>
-							dispatch({ type: "STORE_APPT_FORM", key: "date", payload: event.target.value })
-						}
+						onChange={event => dispatch({ type: "STORE_APPT_FORM", key: "date", payload: event.target.value })}
 					/>
 				</div>
 				<div>
@@ -74,14 +65,7 @@ export function MakeApptForm() {
 						<label>Start Time</label>
 						<select
 							className='ui fluid dropdown'
-							onChange={event =>
-								dispatch({
-									type: "STORE_APPT_FORM",
-									key: "start_time",
-									payload: event.target.value
-								})
-							}
-						>
+							onChange={event => dispatch({ type: "STORE_APPT_FORM", key: "start_time", payload: event.target.value })}>
 							<option value=''>Time</option>
 							<option value='9:00 AM'>9:00 AM</option>
 							<option value='10:00 AM'>10:00 AM</option>

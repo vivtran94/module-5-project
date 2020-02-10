@@ -32,9 +32,7 @@ export function EmployeeCreateApptForm() {
 					<input
 						type='text'
 						placeholder='MM-DD-YYYY'
-						onChange={event =>
-							dispatch({ type: "STORE_APPT_FORM", key: "date", payload: event.target.value })
-						}
+						onChange={event => dispatch({ type: "STORE_APPT_FORM", key: "date", payload: event.target.value })}
 					/>
 				</div>
 				<div>
@@ -42,14 +40,7 @@ export function EmployeeCreateApptForm() {
 						<label>Start Time</label>
 						<select
 							className='ui fluid dropdown'
-							onChange={event =>
-								dispatch({
-									type: "STORE_APPT_FORM",
-									key: "start_time",
-									payload: event.target.value
-								})
-							}
-						>
+							onChange={event => dispatch({ type: "STORE_APPT_FORM", key: "start_time", payload: event.target.value })}>
 							<option value=''>Time</option>
 							<option value='9:00 AM'>9:00 AM</option>
 							<option value='10:00 AM'>10:00 AM</option>

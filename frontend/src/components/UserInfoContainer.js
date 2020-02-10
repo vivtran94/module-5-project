@@ -1,26 +1,20 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Icon, Divider, Grid, Segment, Modal } from "semantic-ui-react";
+import { Icon, Divider, Grid, Segment } from "semantic-ui-react";
 import corgiPuppy from "../images/corgi_puppy.jpg";
-import { AddTaskForm } from "./AddTaskForm";
-import { MakeApptForm } from "./MakeApptForm";
 import { UserInfoCard } from "./UserInfoCard";
 import { UserTaskContainer } from "./UserTaskContainer";
 
-export function PetPortalProfileCard() {
+export function UserInfoContainer() {
 	const dispatch = useDispatch();
 	const user = useSelector(state => state.currentUser);
-	const modal = useSelector(state => state.modal);
+
 	console.log(user);
 
 	const showTaskForm = size => {
 		dispatch({ type: "CHANGE_MODAL", key: "display", payload: "taskform" });
 		dispatch({ type: "CHANGE_MODAL", key: "size", payload: size });
 		dispatch({ type: "CHANGE_MODAL", key: "open", payload: true });
-	};
-
-	const closeModal = () => {
-		dispatch({ type: "CHANGE_MODAL", key: "open", payload: false });
 	};
 
 	if (user === null) return <h1>Loading</h1>;
@@ -47,15 +41,6 @@ export function PetPortalProfileCard() {
 					</Segment>
 				</Grid.Column>
 			</Grid>
-
-			<Modal size={modal.size} open={modal.open} onClose={() => closeModal()}>
-				<Modal.Header>
-					{modal.display === "apptform" ? "Request an Appointment" : "Send a Task"}
-				</Modal.Header>
-				<Modal.Content>
-					{modal.display === "apptform" ? <MakeApptForm /> : <AddTaskForm />}
-				</Modal.Content>
-			</Modal>
 		</div>
 	);
 }

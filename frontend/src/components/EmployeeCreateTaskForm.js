@@ -32,13 +32,7 @@ export function EmployeeCreateTaskForm() {
 					<input
 						type='text'
 						placeholder='Title'
-						onChange={event =>
-							dispatch({
-								type: "STORE_TASK_FORM",
-								key: "title",
-								payload: event.target.value
-							})
-						}
+						onChange={event => dispatch({ type: "STORE_TASK_FORM", key: "title", payload: event.target.value })}
 					/>
 				</div>
 				<div className='field'>
@@ -46,14 +40,7 @@ export function EmployeeCreateTaskForm() {
 					<textarea
 						rows='5'
 						placeholder='Enter your message here...'
-						onChange={event =>
-							dispatch({
-								type: "STORE_TASK_FORM",
-								key: "body",
-								payload: event.target.value
-							})
-						}
-					></textarea>
+						onChange={event => dispatch({ type: "STORE_TASK_FORM", key: "body", payload: event.target.value })}></textarea>
 				</div>
 				<div className='ui blue button' onClick={event => handleSubmit(event)}>
 					Send

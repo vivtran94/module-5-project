@@ -42,14 +42,7 @@ export function AddTaskForm() {
 					<label>Who do you want to send the task to?</label>
 					<select
 						className='ui fluid dropdown'
-						onChange={event =>
-							dispatch({
-								type: "STORE_TASK_FORM",
-								key: "employee_id",
-								payload: event.target.value
-							})
-						}
-					>
+						onChange={event => dispatch({ type: "STORE_TASK_FORM", key: "employee_id", payload: event.target.value })}>
 						<option value=''>Employee</option>
 						{allEmployees.map(employee => (
 							<option value={employee.id}>{employee.first_name}</option>
@@ -61,13 +54,7 @@ export function AddTaskForm() {
 					<input
 						type='text'
 						placeholder='Title'
-						onChange={event =>
-							dispatch({
-								type: "STORE_TASK_FORM",
-								key: "title",
-								payload: event.target.value
-							})
-						}
+						onChange={event => dispatch({ type: "STORE_TASK_FORM", key: "title", payload: event.target.value })}
 					/>
 				</div>
 				<div className='field'>
@@ -75,14 +62,7 @@ export function AddTaskForm() {
 					<textarea
 						rows='5'
 						placeholder='Enter your message here...'
-						onChange={event =>
-							dispatch({
-								type: "STORE_TASK_FORM",
-								key: "body",
-								payload: event.target.value
-							})
-						}
-					></textarea>
+						onChange={event => dispatch({ type: "STORE_TASK_FORM", key: "body", payload: event.target.value })}></textarea>
 				</div>
 				<div className='ui blue button' onClick={event => handleSubmit(event)}>
 					Send

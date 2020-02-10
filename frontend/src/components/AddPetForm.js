@@ -48,19 +48,14 @@ export function AddPetForm() {
 							<input
 								type='text'
 								placeholder='Name'
-								onChange={event =>
-									dispatch({ type: "STORE_PET_FORM", key: "name", payload: event.target.value })
-								}
+								onChange={event => dispatch({ type: "STORE_PET_FORM", key: "name", payload: event.target.value })}
 							/>
 						</div>
 						<div className='four wide field'>
 							<label>Gender</label>
 							<select
 								className='ui fluid dropdown'
-								onChange={event =>
-									dispatch({ type: "STORE_PET_FORM", key: "gender", payload: event.target.value })
-								}
-							>
+								onChange={event => dispatch({ type: "STORE_PET_FORM", key: "gender", payload: event.target.value })}>
 								<option value=''>Gender</option>
 								<option value='F'>Female</option>
 								<option value='M'>Male</option>
@@ -72,13 +67,7 @@ export function AddPetForm() {
 						<input
 							type='text'
 							placeholder='MM-DD-YYYY'
-							onChange={event =>
-								dispatch({
-									type: "STORE_PET_FORM",
-									key: "dateOfBirth",
-									payload: event.target.value
-								})
-							}
+							onChange={event => dispatch({ type: "STORE_PET_FORM", key: "dateOfBirth", payload: event.target.value })}
 						/>
 					</div>
 					<div className='field'>
@@ -86,9 +75,7 @@ export function AddPetForm() {
 						<input
 							type='text'
 							placeholder='Breed'
-							onChange={event =>
-								dispatch({ type: "STORE_PET_FORM", key: "breed", payload: event.target.value })
-							}
+							onChange={event => dispatch({ type: "STORE_PET_FORM", key: "breed", payload: event.target.value })}
 						/>
 					</div>
 					<div className='field'>
@@ -96,9 +83,7 @@ export function AddPetForm() {
 						<input
 							type='text'
 							placeholder='Color'
-							onChange={event =>
-								dispatch({ type: "STORE_PET_FORM", key: "color", payload: event.target.value })
-							}
+							onChange={event => dispatch({ type: "STORE_PET_FORM", key: "color", payload: event.target.value })}
 						/>
 					</div>
 					<button className='ui blue button' onClick={event => handleSubmit(event)}>

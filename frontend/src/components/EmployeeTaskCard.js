@@ -1,7 +1,7 @@
 import React from "react";
 import { Segment } from "semantic-ui-react";
 
-export function UserTaskCard(props) {
+export function EmployeeTaskCard(props) {
 	const taskCompleted = task => {
 		fetch(`http://localhost:3000/tasks/${task.id}`, {
 			method: "PATCH",
@@ -16,8 +16,8 @@ export function UserTaskCard(props) {
 		<Segment className='baseline-space-between'>
 			<div>
 				<div className='ai-baseline'>
-					<span className='mini ui button'>{props.task.user.user.id}</span>
-					<span>{`${props.task.user.user.first_name} ${props.task.user.user.last_name}: ${props.task.task_title}`}</span>
+					<span className='mini ui button'>{props.task.user.id}</span>
+					<span>{`${props.task.user.first_name} ${props.task.user.last_name}: ${props.task.task_title}`}</span>
 				</div>
 				<p>{props.task.task_body}</p>
 			</div>

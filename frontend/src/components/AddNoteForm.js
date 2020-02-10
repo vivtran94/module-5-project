@@ -32,27 +32,14 @@ export function AddNoteForm() {
 					<input
 						type='text'
 						placeholder='Title'
-						onChange={event =>
-							dispatch({
-								type: "STORE_NOTE_FORM",
-								key: "title",
-								payload: event.target.value
-							})
-						}
+						onChange={event => dispatch({ type: "STORE_NOTE_FORM", key: "title", payload: event.target.value })}
 					/>
 				</div>
 				<div className='field'>
 					<textarea
 						rows='10'
 						placeholder='Enter your note here...'
-						onChange={event =>
-							dispatch({
-								type: "STORE_NOTE_FORM",
-								key: "body",
-								payload: event.target.value
-							})
-						}
-					></textarea>
+						onChange={event => dispatch({ type: "STORE_NOTE_FORM", key: "body", payload: event.target.value })}></textarea>
 				</div>
 				<div className='ui blue button' onClick={event => handleSubmit(event)}>
 					Add

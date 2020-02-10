@@ -36,29 +36,11 @@ export function EmployeeLoginForm() {
 			<form className='ui form'>
 				<div className='field'>
 					<label>Username</label>
-					<input
-						type='text'
-						placeholder='Username'
-						onChange={event =>
-							dispatch({
-								type: "STORE_USERNAME_INPUT",
-								payload: event.target.value
-							})
-						}
-					/>
+					<input type='text' placeholder='Username' onChange={event => dispatch({ type: "STORE_USERNAME_INPUT", payload: event.target.value })} />
 				</div>
 				<div className='field'>
 					<label>Password</label>
-					<input
-						type='password'
-						placeholder='Password'
-						onChange={event =>
-							dispatch({
-								type: "STORE_PASSWORD_INPUT",
-								payload: event.target.value
-							})
-						}
-					/>
+					<input type='password' placeholder='Password' onChange={event => dispatch({ type: "STORE_PASSWORD_INPUT", payload: event.target.value })} />
 				</div>
 				<div className='ui pink button' onClick={event => handleSubmit(event)}>
 					Log In

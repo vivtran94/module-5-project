@@ -4,14 +4,15 @@ import { history } from "./history.js";
 import { PrivateRoute } from "./PrivateRoute";
 import { useDispatch } from "react-redux";
 import "semantic-ui-css/semantic.min.css";
+import "./App.css";
 
 import { PublicHomePage } from "./components/PublicHomePage";
 import { PublicServicesPage } from "./components/PublicServicesPage";
 import { SignUpForm } from "./components/SignUpForm";
-import { PetPortalProfilePage } from "./components/PetPortalProfilePage";
+import { UserHomePage } from "./components/UserHomePage";
 import { EmployeeHomePage } from "./components/EmployeeHomePage";
 import { AddPetForm } from "./components/AddPetForm";
-import { SearchPage } from "./components/SearchPage";
+import { EmployeeSearchPage } from "./components/EmployeeSearchPage";
 
 export default function App() {
 	const dispatch = useDispatch();
@@ -40,10 +41,10 @@ export default function App() {
 					<Route exact path='/' component={PublicHomePage} />
 					<Route exact path='/services' component={PublicServicesPage} />
 					<Route exact path='/signup' component={SignUpForm} />
-					<Route exact path='/myprofile' component={PetPortalProfilePage} />
-					<Route exact path='/employee/home' component={EmployeeHomePage} />
-					<Route exact path='/addpet' component={AddPetForm} />
-					<Route exact path='/search' component={SearchPage} />
+					<PrivateRoute exact path='/user/home' component={UserHomePage} />
+					<PrivateRoute exact path='/user/addpet' component={AddPetForm} />
+					<PrivateRoute exact path='/employee/home' component={EmployeeHomePage} />
+					<PrivateRoute exact path='/search' component={EmployeeSearchPage} />
 				</Switch>
 			</Router>
 		</div>
