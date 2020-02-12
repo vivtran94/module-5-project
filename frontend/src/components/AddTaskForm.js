@@ -39,7 +39,7 @@ export function AddTaskForm() {
 		<div>
 			<form className='ui form'>
 				<div className='field'>
-					<label>Who do you want to send the task to?</label>
+					<label>Who do you want to send the message to?</label>
 					<select
 						className='ui fluid dropdown'
 						onChange={event => dispatch({ type: "STORE_TASK_FORM", key: "employee_id", payload: event.target.value })}>
@@ -64,7 +64,7 @@ export function AddTaskForm() {
 						placeholder='Enter your message here...'
 						onChange={event => dispatch({ type: "STORE_TASK_FORM", key: "body", payload: event.target.value })}></textarea>
 				</div>
-				<div className='ui blue button' onClick={event => handleSubmit(event)}>
+				<div className='ui teal button' onClick={event => handleSubmit(event)}>
 					Send
 				</div>
 			</form>

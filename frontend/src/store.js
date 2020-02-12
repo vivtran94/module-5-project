@@ -18,7 +18,8 @@ const initialState = {
 		dateOfBirth: "",
 		gender: "",
 		breed: "",
-		color: ""
+		color: "",
+		profile_pic: ""
 	},
 
 	apptForm: {
@@ -31,6 +32,13 @@ const initialState = {
 		display: "",
 		size: "",
 		open: false
+	},
+
+	sidebar: {
+		animation: "",
+		direction: "",
+		dimmed: false,
+		visible: false
 	},
 
 	taskForm: {
@@ -109,6 +117,14 @@ const reducer = (currentState, action) => {
 					[action.key]: action.payload
 				}
 			};
+		case "CHANGE_SIDEBAR":
+			return {
+				...currentState,
+				sidebar: {
+					...currentState.sidebar,
+					[action.key]: action.payload
+				}
+			};
 		case "ALL_USERS":
 			return {
 				...currentState,
@@ -129,9 +145,7 @@ const reducer = (currentState, action) => {
 			return {
 				...currentState,
 				searchResult: currentState.allUsers.filter(
-					user =>
-						user.first_name.toLowerCase().includes(currentState.searchValue) ||
-						user.last_name.toLowerCase().includes(currentState.searchValue)
+					user => user.first_name.toLowerCase().includes(currentState.searchValue) || user.last_name.toLowerCase().includes(currentState.searchValue)
 				)
 			};
 		case "STORE_SELECTED_USER":
@@ -156,10 +170,6 @@ const reducer = (currentState, action) => {
 	return currentState;
 };
 
-export const store = createStore(
-	reducer,
-	initialState,
-	window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-);
+export const store = createStore(reducer, initialState, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 window.store = store;

@@ -21,7 +21,8 @@ export function AddPetForm() {
 					dateOfBirth: petForm.dateOfBirth,
 					gender: petForm.gender,
 					breed: petForm.breed,
-					color: petForm.color
+					color: petForm.color,
+					profile_pic: petForm.profile_pic
 				})
 			})
 				.then(response => response.json())
@@ -29,7 +30,7 @@ export function AddPetForm() {
 					if (signup.failed) {
 						console.log("failed login");
 					} else {
-						history.push("/myprofile");
+						history.push("/user/home");
 					}
 				});
 		} else {
@@ -40,10 +41,9 @@ export function AddPetForm() {
 	return (
 		<div>
 			<div style={{ maxWidth: "400px", margin: "auto" }}>
-				<h1>Add Pet Form</h1>
 				<form className='ui form'>
 					<div className='two fields'>
-						<div className='twelve wide field'>
+						<div className='eleven wide field'>
 							<label>Name</label>
 							<input
 								type='text'
@@ -51,7 +51,7 @@ export function AddPetForm() {
 								onChange={event => dispatch({ type: "STORE_PET_FORM", key: "name", payload: event.target.value })}
 							/>
 						</div>
-						<div className='four wide field'>
+						<div className='five wide field'>
 							<label>Gender</label>
 							<select
 								className='ui fluid dropdown'
@@ -86,11 +86,8 @@ export function AddPetForm() {
 							onChange={event => dispatch({ type: "STORE_PET_FORM", key: "color", payload: event.target.value })}
 						/>
 					</div>
-					<button className='ui blue button' onClick={event => handleSubmit(event)}>
+					<button className='ui button' style={{ backgroundColor: "#FF7A75", color: "white" }} onClick={event => handleSubmit(event)}>
 						Add
-					</button>
-					<button className='ui red button' onClick={() => history.push("/myprofile")}>
-						Cancel
 					</button>
 				</form>
 			</div>

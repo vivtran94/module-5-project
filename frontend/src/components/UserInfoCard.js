@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 export function UserInfoCard() {
 	const user = useSelector(state => state.currentUser);
 	return (
-		<Segment>
+		<Segment color='teal'>
 			<h3>
 				{user.user.first_name} {user.user.last_name}
 			</h3>
@@ -16,12 +16,12 @@ export function UserInfoCard() {
 			<Divider></Divider>
 			<div>
 				<div>
-					<Icon name='user' />
-					{user.user.phone_number}
+					<Icon name='phone' />
+					<span style={{ paddingLeft: "5px" }}>{user.user.phone_number}</span>
 				</div>
 				<div>
-					<Icon name='user' />
-					{user.user.email}
+					<Icon name='envelope' />
+					<span style={{ paddingLeft: "5px" }}>{user.user.email}</span>
 				</div>
 			</div>
 		</Segment>

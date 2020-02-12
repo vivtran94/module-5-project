@@ -13,12 +13,14 @@ export function EmployeeTaskCard(props) {
 	};
 
 	return (
-		<Segment className='baseline-space-between'>
-			<div>
+		<Segment className='baseline-space-between' style={{ backgroundColor: "white" }}>
+			<div style={{ alignContent: "space-evenly" }}>
 				<div className='ai-baseline'>
 					<span className='mini ui button'>{props.task.user.id}</span>
-					<span>{`${props.task.user.first_name} ${props.task.user.last_name}: ${props.task.task_title}`}</span>
+
+					<b style={{ paddingLeft: "10px" }}>{`${props.task.user.first_name} ${props.task.user.last_name}: ${props.task.task_title}`}</b>
 				</div>
+				<p></p>
 				<p>{props.task.task_body}</p>
 			</div>
 			{props.task.task_completed === true ? (

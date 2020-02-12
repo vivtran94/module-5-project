@@ -26,11 +26,11 @@ export function EmployeeHomePage() {
 
 	if (employee === null) return <h1>Loading</h1>;
 	return (
-		<div>
+		<div className='background'>
 			<EmployeeNavBar />
-			<div style={{ maxWidth: "1000px", margin: "auto" }}>
+			<div style={{ maxWidth: "1000px", margin: "auto", padding: "40px" }}>
 				<Grid stretched>
-					<Grid.Column width={8}>
+					<Grid.Column width={10}>
 						<EmployeeTaskContainer />
 					</Grid.Column>
 					<Grid.Column width={6}>

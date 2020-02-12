@@ -9,10 +9,13 @@ export function SearchResultContainer() {
 	return (
 		<div>
 			{searchResult.length > 0 ? (
-				<div>
-					{searchResult.map(result => (
-						<Segment onClick={() => dispatch({ type: "STORE_SELECTED_USER", payload: result })}>{`${result.first_name} ${result.last_name}`}</Segment>
-					))}
+				<div style={{ height: "75vh" }}>
+					<Segment.Group>
+						{searchResult.map(result => (
+							<Segment
+								onClick={() => dispatch({ type: "STORE_SELECTED_USER", payload: result })}>{`${result.first_name} ${result.last_name}`}</Segment>
+						))}
+					</Segment.Group>
 				</div>
 			) : null}
 		</div>

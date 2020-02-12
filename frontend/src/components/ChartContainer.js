@@ -17,34 +17,43 @@ export function ChartContainer() {
 
 	return (
 		<div>
-			<Segment>
+			<Segment color='blue' style={{ paddingBottom: "0px" }}>
 				<Grid.Row>
 					<Segment>
-						<div className='ai-baseline'>
-							<span className='mini ui button'>{selectedUser.id}</span>
-							<span>{`${selectedUser.last_name.toUpperCase()}, ${selectedUser.first_name.toUpperCase()}`}</span>
-							<button onClick={() => employeeCreateTask("mini")}>Create Task</button>
+						<div className='baseline-space-between'>
+							<div className='ai-baseline'>
+								<b className='mini ui basic button'>{selectedUser.id}</b>
+								<b style={{ paddingLeft: "10px" }}>{`${selectedUser.last_name.toUpperCase()}  ,`}</b>
+								<b style={{ paddingLeft: "5px" }}>{selectedUser.first_name.toUpperCase()}</b>
+							</div>
+							<button className='ui blue button' onClick={() => employeeCreateTask("mini")}>
+								Create Task
+							</button>
 						</div>
 					</Segment>
 				</Grid.Row>
 				<Grid.Row>
 					<Segment.Group horizontal>
-						<Segment>
-							<span>PHONE NUMBER: {selectedUser.phone_number}</span>
+						<Segment style={{ display: "flex", alignItems: "baseline" }}>
+							<b style={{ paddingRight: "10px" }}>PHONE NUMBER:</b>
+							<span>{selectedUser.phone_number}</span>
 						</Segment>
 						<Segment>
-							<span>E-MAIL: {selectedUser.email}</span>
+							<b style={{ paddingRight: "10px" }}>E-MAIL:</b>
+							<span>{selectedUser.email}</span>
 						</Segment>
 						<Segment>
-							<span>DRIVER LICENSE: {selectedUser.driver_license}</span>
+							<b style={{ paddingRight: "10px" }}>DRIVER LICENSE:</b>
+							<span>{selectedUser.driver_license}</span>
 						</Segment>
 					</Segment.Group>
 				</Grid.Row>
 				<Grid.Row>
 					<Segment.Group horizontal>
 						<Segment>
+							<b style={{ paddingRight: "10px" }}>ADDRESS:</b>
 							<span>
-								{`ADDRESS: ${selectedUser.street_address}, ${selectedUser.street_city}, ${selectedUser.street_state} ${selectedUser.street_zipcode}`}
+								{`${selectedUser.street_address}, ${selectedUser.street_city}, ${selectedUser.street_state} ${selectedUser.street_zipcode}`}
 							</span>
 						</Segment>
 					</Segment.Group>

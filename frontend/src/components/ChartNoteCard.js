@@ -22,7 +22,7 @@ export function ChartNoteCard(props) {
 	};
 
 	return (
-		<Segment className='baseline-space-between'>
+		<Segment className='baseline-space-between' style={{ paddingBottom: "0px" }}>
 			<h5
 				onClick={() => {
 					showNote("large");

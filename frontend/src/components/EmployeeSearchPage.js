@@ -38,15 +38,20 @@ export function EmployeeSearchPage() {
 
 	if (allUsers === null) return <h1>Loading</h1>;
 	return (
-		<div>
+		<div className='background' style={{ height: "100vh" }}>
 			<EmployeeNavBar />
+
 			<Grid>
-				<Grid.Column width={3}>
-					<Input fluid icon='search' placeholder='Search...' onChange={e => search(e.target.value)} />
-					<Divider horizontal></Divider>
+				<Grid.Column width={2}>
 					<SearchResultContainer />
 				</Grid.Column>
-				<Grid.Column width={12}>{selectedUser === null ? null : <ChartContainer />}</Grid.Column>
+				<Grid.Column width={12}>
+					<Grid.Row>
+						<Input fluid icon='search' placeholder='Search...' onChange={e => search(e.target.value)} />
+						<Divider horizontal></Divider>
+					</Grid.Row>
+					<Grid.Row>{selectedUser === null ? null : <ChartContainer />}</Grid.Row>
+				</Grid.Column>
 			</Grid>
 
 			<Modal size={modal.size} open={modal.open} onClose={() => closeModal()}>

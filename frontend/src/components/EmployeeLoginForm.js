@@ -42,7 +42,7 @@ export function EmployeeLoginForm() {
 					<label>Password</label>
 					<input type='password' placeholder='Password' onChange={event => dispatch({ type: "STORE_PASSWORD_INPUT", payload: event.target.value })} />
 				</div>
-				<div className='ui pink button' onClick={event => handleSubmit(event)}>
+				<div className='ui blue button' onClick={event => handleSubmit(event)}>
 					Log In
 				</div>
 			</form>

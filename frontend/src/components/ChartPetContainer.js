@@ -21,14 +21,18 @@ export function ChartPetContainer(props) {
 	};
 
 	return (
-		<Segment>
+		<Segment color='blue' style={{ paddingTop: "0px" }}>
 			<Grid.Row>
 				<Segment.Group horizontal>
-					<Segment className='ai-center'>
-						<div>
-							<span>{props.pet.gender === "M" ? <Icon circular name='mars' /> : <Icon circular name='venus' />} </span>
-							<span>{`${selectedUser.last_name.toUpperCase()}, ${props.pet.name.toUpperCase()} (${props.pet.date_of_birth})`}</span>
+					<Segment>
+						<div className='baseline-space-between'>
+							<div>
+								<span>{props.pet.gender === "M" ? <Icon circular name='mars' /> : <Icon circular name='venus' />} </span>
+								<b style={{ paddingLeft: "5px" }}>{`${selectedUser.last_name.toUpperCase()}  ,`}</b>
+								<b style={{ paddingLeft: "5px" }}>{props.pet.name.toUpperCase()}</b>
+							</div>
 							<button
+								className='ui blue button'
 								onClick={() => {
 									employeeCreateAppt("mini");
 									dispatch({ type: "CURRENT_PET", payload: props.pet });
@@ -37,32 +41,46 @@ export function ChartPetContainer(props) {
 							</button>
 						</div>
 					</Segment>
-					<Segment>
-						<span>BREED: {props.pet.breed}</span>
-					</Segment>
-					<Segment>
-						<span>COLOR: {props.pet.color}</span>
-					</Segment>
 				</Segment.Group>
 			</Grid.Row>
 			<Grid columns={2} stretched>
 				<Grid.Column width={5}>
-					<Segment>
-						<img src={corgiPuppy} className='ui large image' alt='pet' />
-					</Segment>
+					<Segment.Group>
+						<Segment>
+							<b style={{ paddingRight: "10px" }}>DOB:</b>
+							<span>{props.pet.date_of_birth}</span>
+						</Segment>
+						<Segment>
+							<b style={{ paddingRight: "10px" }}>BREED:</b>
+							<span>{props.pet.breed}</span>
+						</Segment>
+						<Segment>
+							<b style={{ paddingRight: "10px" }}>COLOR:</b>
+							<span>{props.pet.color}</span>
+						</Segment>
+						<Segment>
+							<img src={corgiPuppy} className='ui large image' alt='pet' />
+						</Segment>
+					</Segment.Group>
 				</Grid.Column>
 				<Grid.Column width={11}>
 					<Segment>
-						<h3>Medical Notes</h3>
+						<h3 style={{ marginBottom: "0px" }}>Medical Notes</h3>
 						<Divider
 							horizontal
+							style={{ marginTop: "0px" }}
 							onClick={() => {
 								addNote("large");
 								dispatch({ type: "CURRENT_PET", payload: props.pet });
-							}}>{`Create Note`}</Divider>
-						{props.pet.notes.map(note => (
-							<ChartNoteCard note={note} />
-						))}
+							}}>
+							<Icon name='file alternate outline' />
+							Create Note
+						</Divider>
+						<Segment.Group>
+							{props.pet.notes.map(note => (
+								<ChartNoteCard note={note} />
+							))}
+						</Segment.Group>
 					</Segment>
 				</Grid.Column>
 			</Grid>

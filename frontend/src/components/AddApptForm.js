@@ -80,7 +80,7 @@ export function AddApptForm() {
 					</div>
 				</div>
 				<br></br>
-				<div className='ui blue button' onClick={event => handleSubmit(event)}>
+				<div className='ui teal button' onClick={event => handleSubmit(event)}>
 					Request Appointment
 				</div>
 			</form>

@@ -1,6 +1,7 @@
 import React from "react";
 import { history } from "../history";
 import { PublicNavBar } from "./PublicNavBar";
+import cat from "../images/gray_cat.jpg";
 
 export class SignUpForm extends React.Component {
 	state = {
@@ -53,10 +54,16 @@ export class SignUpForm extends React.Component {
 
 	render() {
 		return (
-			<div>
+			<div
+				style={{
+					backgroundImage: `url(${cat})`,
+					backgroundSize: "100% 100%",
+					height: "100%",
+					width: "100%",
+					position: "absolute"
+				}}>
 				<PublicNavBar />
-				<div style={{ maxWidth: "700px", margin: "auto" }}>
-					<h1>Sign Up Form</h1>
+				<div style={{ maxWidth: "45vw", margin: "6%" }}>
 					<form className='ui form'>
 						<div className='three fields'>
 							<div className='field'>

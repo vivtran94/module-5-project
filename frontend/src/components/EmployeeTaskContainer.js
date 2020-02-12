@@ -7,7 +7,7 @@ export function EmployeeTaskContainer() {
 	const employee = useSelector(state => state.currentEmployee);
 
 	return (
-		<Segment>
+		<Segment color='blue'>
 			<h3>To Do List</h3>
 			<Divider></Divider>
 			{employee.employee.tasks

@@ -13,22 +13,16 @@ export function PetAppointmentCard(props) {
 	};
 
 	return (
-		<Segment
-			style={{
-				display: "flex",
-				justifyContent: "space-between",
-				alignItems: "center"
-			}}>
+		<Segment className='baseline-space-between'>
 			<div>
 				{props.appointment.date} at {props.appointment.start_time}
 			</div>
-			{props.appointment.user_confirmed === true &&
-			props.appointment.employee_confirmed === true ? (
-				<button className='ui green icon button'>
+			{props.appointment.user_confirmed === true && props.appointment.employee_confirmed === true ? (
+				<button className='mini ui green icon button'>
 					<i className='check icon'></i>
 				</button>
 			) : (
-				<button className='ui icon button' onClick={() => userConfirmed(props.appointment)}>
+				<button className='mini ui icon button' onClick={() => userConfirmed(props.appointment)}>
 					<i className='check icon'></i>
 				</button>
 			)}

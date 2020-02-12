@@ -16,7 +16,7 @@ export function EmployeeApptContainer() {
 	};
 
 	return (
-		<Segment>
+		<Segment color='blue'>
 			<h3>Appointments</h3>
 			<Divider></Divider>
 			<div>

@@ -8,7 +8,7 @@ import { PetNoteCard } from "./PetNoteCard";
 export function PetContainer(props) {
 	const dispatch = useDispatch();
 
-	const showMakeApptForm = size => {
+	const showAddApptForm = size => {
 		dispatch({ type: "CHANGE_MODAL", key: "display", payload: "apptform" });
 		dispatch({ type: "CHANGE_MODAL", key: "size", payload: size });
 		dispatch({ type: "CHANGE_MODAL", key: "open", payload: true });
@@ -18,27 +18,28 @@ export function PetContainer(props) {
 		<div style={{ maxWidth: "1000px", margin: "auto" }}>
 			<Grid columns={2} stretched>
 				<Grid.Column width={5}>
-					<Segment>
+					<Segment color='teal'>
 						<PetCard pet={props.pet} />
 						<h4
+							style={{ marginTop: "14px" }}
 							onClick={() => {
-								showMakeApptForm("mini");
+								showAddApptForm("mini");
 								dispatch({ type: "CURRENT_PET", payload: props.pet });
 							}}>
 							<Icon circular name='calendar plus outline' />
 							{`Make an appointment for ${props.pet.name}`}
 						</h4>
-						<div>
+						<Segment.Group>
 							{props.pet.appointments.map(appointment => (
 								<PetAppointmentCard appointment={appointment} />
 							))}
-						</div>
+						</Segment.Group>
 					</Segment>
 				</Grid.Column>
-				<Grid.Column width={10}>
-					<Segment>
-						<h3>Medical Notes</h3>
-						<Divider></Divider>
+				<Grid.Column width={11}>
+					<Segment color='teal'>
+						<h3 style={{ marginBottom: "6px" }}>Medical Notes</h3>
+						<Divider style={{ marginTop: "0px" }}></Divider>
 						<div>
 							{props.pet.notes
 								.filter(note => note.visible_to_user === true)
