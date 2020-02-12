@@ -1,5 +1,6 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { BACKEND_HOST } from "./ip";
 
 export function EmployeeCreateApptForm() {
 	const dispatch = useDispatch();
@@ -8,7 +9,7 @@ export function EmployeeCreateApptForm() {
 
 	const handleSubmit = event => {
 		event.preventDefault();
-		fetch("http://localhost:3000/employee/create_appt", {
+		fetch(`http://${BACKEND_HOST}/employee/create_appt`, {
 			method: "POST",
 			headers: {
 				Authorization: `Bearer ${localStorage.token}`,

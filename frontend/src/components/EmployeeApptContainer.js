@@ -1,12 +1,13 @@
 import React from "react";
 import { Segment, Divider } from "semantic-ui-react";
 import { useSelector } from "react-redux";
+import { BACKEND_HOST } from "./ip";
 
 export function EmployeeApptContainer() {
 	const employee = useSelector(state => state.currentEmployee);
 
 	const employeeConfirmed = appointment => {
-		fetch(`http://localhost:3000/employee/appointments/${appointment.id}`, {
+		fetch(`http://${BACKEND_HOST}/employee/appointments/${appointment.id}`, {
 			method: "PATCH",
 			headers: {
 				Authorization: `Bearer ${localStorage.token}`,

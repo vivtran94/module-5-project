@@ -1,5 +1,6 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { BACKEND_HOST } from "./ip";
 
 export function EmployeeCreateTaskForm() {
 	const dispatch = useDispatch();
@@ -8,7 +9,7 @@ export function EmployeeCreateTaskForm() {
 
 	const handleSubmit = event => {
 		event.preventDefault();
-		fetch("http://localhost:3000/employee/create_task", {
+		fetch(`http://${BACKEND_HOST}/employee/create_task`, {
 			method: "POST",
 			headers: {
 				Authorization: `Bearer ${localStorage.token}`,

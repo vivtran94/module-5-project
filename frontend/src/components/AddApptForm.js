@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { BACKEND_HOST } from "./ip";
 
 export function AddApptForm() {
 	const dispatch = useDispatch();
@@ -10,7 +11,7 @@ export function AddApptForm() {
 
 	const handleSubmit = event => {
 		event.preventDefault();
-		fetch("http://localhost:3000/appointments", {
+		fetch(`http://${BACKEND_HOST}/appointments`, {
 			method: "POST",
 			headers: {
 				Authorization: `Bearer ${localStorage.token}`,
@@ -28,7 +29,7 @@ export function AddApptForm() {
 	};
 
 	useEffect(() => {
-		fetch("http://localhost:3000/employees", {
+		fetch(`http://${BACKEND_HOST}/employees`, {
 			headers: {
 				Authorization: `Bearer ${localStorage.token}`
 			}

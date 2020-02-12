@@ -9,6 +9,7 @@ import { EmployeeCreateApptForm } from "./EmployeeCreateApptForm";
 import { EmployeeCreateTaskForm } from "./EmployeeCreateTaskForm";
 import { SearchResultContainer } from "./SearchResultContainer";
 import { ChartContainer } from "./ChartContainer";
+import { BACKEND_HOST } from "./ip";
 
 export function EmployeeSearchPage() {
 	const dispatch = useDispatch();
@@ -27,7 +28,7 @@ export function EmployeeSearchPage() {
 	};
 
 	useEffect(() => {
-		fetch("http://localhost:3000/users", {
+		fetch(`http://${BACKEND_HOST}/users`, {
 			headers: {
 				Authorization: `Bearer ${localStorage.token}`
 			}

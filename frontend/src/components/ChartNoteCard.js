@@ -1,6 +1,7 @@
 import React from "react";
 import { Segment } from "semantic-ui-react";
 import { useDispatch } from "react-redux";
+import { BACKEND_HOST } from "./ip";
 
 export function ChartNoteCard(props) {
 	const dispatch = useDispatch();
@@ -12,7 +13,7 @@ export function ChartNoteCard(props) {
 	};
 
 	const makeNoteVisible = note => {
-		fetch(`http://localhost:3000/notes/${note.id}`, {
+		fetch(`http://${BACKEND_HOST}/notes/${note.id}`, {
 			method: "PATCH",
 			headers: {
 				Authorization: `Bearer ${localStorage.token}`,

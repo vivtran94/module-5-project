@@ -1,6 +1,7 @@
 import React from "react";
 import { history } from "../history";
 import { useDispatch, useSelector } from "react-redux";
+import { BACKEND_HOST } from "./ip";
 
 export function AddPetForm() {
 	const dispatch = useDispatch();
@@ -10,7 +11,7 @@ export function AddPetForm() {
 	function handleSubmit(event) {
 		if (localStorage.token) {
 			event.preventDefault();
-			fetch("http://localhost:3000/pets", {
+			fetch(`http://${BACKEND_HOST}/pets`, {
 				method: "POST",
 				headers: {
 					Authorization: `Bearer ${localStorage.token}`,

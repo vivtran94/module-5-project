@@ -2,6 +2,7 @@ import React from "react";
 import { history } from "../history";
 import { PublicNavBar } from "./PublicNavBar";
 import cat from "../images/gray_cat.jpg";
+import { BACKEND_HOST } from "./ip";
 
 export class SignUpForm extends React.Component {
 	state = {
@@ -22,7 +23,7 @@ export class SignUpForm extends React.Component {
 
 	handleSubmit = event => {
 		event.preventDefault();
-		fetch("http://localhost:3000/users", {
+		fetch(`http://${BACKEND_HOST}/users`, {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json"

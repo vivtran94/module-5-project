@@ -8,6 +8,7 @@ import { AddTaskForm } from "./AddTaskForm";
 import { AddApptForm } from "./AddApptForm";
 import background from "../images/blue_background.jpg";
 import { AddPetForm } from "./AddPetForm";
+import { BACKEND_HOST } from "./ip";
 
 export function UserHomePage() {
 	const dispatch = useDispatch();
@@ -26,7 +27,7 @@ export function UserHomePage() {
 
 	useEffect(() => {
 		if (localStorage.token != null) {
-			fetch("http://localhost:3000/get_user", {
+			fetch(`http://${BACKEND_HOST}/get_user`, {
 				headers: {
 					Authorization: `Bearer ${localStorage.token}`
 				}

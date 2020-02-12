@@ -1,5 +1,6 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { BACKEND_HOST } from "./ip";
 
 export function AddNoteForm() {
 	const dispatch = useDispatch();
@@ -8,7 +9,7 @@ export function AddNoteForm() {
 
 	const handleSubmit = event => {
 		event.preventDefault();
-		fetch("http://localhost:3000/notes", {
+		fetch(`http://${BACKEND_HOST}/notes`, {
 			method: "POST",
 			headers: {
 				Authorization: `Bearer ${localStorage.token}`,

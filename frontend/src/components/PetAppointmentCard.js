@@ -1,9 +1,10 @@
 import React from "react";
 import { Segment } from "semantic-ui-react";
+import { BACKEND_HOST } from "./ip";
 
 export function PetAppointmentCard(props) {
 	const userConfirmed = appointment => {
-		fetch(`http://localhost:3000/appointments/${appointment.id}`, {
+		fetch(`http://${BACKEND_HOST}/appointments/${appointment.id}`, {
 			method: "PATCH",
 			headers: {
 				Authorization: `Bearer ${localStorage.token}`,

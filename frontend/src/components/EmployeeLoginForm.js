@@ -1,6 +1,7 @@
 import React from "react";
 import { history } from "../history";
 import { useDispatch, useSelector } from "react-redux";
+import { BACKEND_HOST } from "./ip";
 
 export function EmployeeLoginForm() {
 	const dispatch = useDispatch();
@@ -9,7 +10,7 @@ export function EmployeeLoginForm() {
 
 	function handleSubmit(event) {
 		event.preventDefault();
-		fetch("http://localhost:3000/employees/login", {
+		fetch(`http://${BACKEND_HOST}/employees/login`, {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json"

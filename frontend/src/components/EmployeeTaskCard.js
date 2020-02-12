@@ -1,9 +1,10 @@
 import React from "react";
 import { Segment } from "semantic-ui-react";
+import { BACKEND_HOST } from "./ip";
 
 export function EmployeeTaskCard(props) {
 	const taskCompleted = task => {
-		fetch(`http://localhost:3000/tasks/${task.id}`, {
+		fetch(`http://${BACKEND_HOST}/tasks/${task.id}`, {
 			method: "PATCH",
 			headers: {
 				Authorization: `Bearer ${localStorage.token}`,

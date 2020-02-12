@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Grid } from "semantic-ui-react";
 import { EmployeeTaskContainer } from "./EmployeeTaskContainer";
 import { EmployeeApptContainer } from "./EmployeeApptContainer";
+import { BACKEND_HOST } from "./ip";
 
 export function EmployeeHomePage() {
 	const dispatch = useDispatch();
@@ -12,7 +13,7 @@ export function EmployeeHomePage() {
 
 	useEffect(() => {
 		if (localStorage.token != null) {
-			fetch("http://localhost:3000/get_employee", {
+			fetch(`http://${BACKEND_HOST}/get_employee`, {
 				headers: {
 					Authorization: `Bearer ${localStorage.token}`
 				}
