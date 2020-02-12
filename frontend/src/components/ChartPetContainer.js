@@ -65,7 +65,7 @@ export function ChartPetContainer(props) {
 				</Grid.Column>
 				<Grid.Column width={11}>
 					<Segment>
-						<h3 style={{ marginBottom: "0px" }}>Medical Notes</h3>
+						<b style={{ marginBottom: "0px", fontSize: "18px"}}>Medical Notes</b>
 						<Divider
 							horizontal
 							style={{ marginTop: "0px" }}

@@ -23,13 +23,13 @@ export function ChartNoteCard(props) {
 
 	return (
 		<Segment className='baseline-space-between' style={{ paddingBottom: "0px" }}>
-			<h5
+			<b
 				onClick={() => {
 					showNote("large");
 					dispatch({ type: "STORE_SELECTED_NOTE", payload: props.note });
 				}}>
 				{props.note.note_title}
-			</h5>
+			</b>
 			{props.note.visible_to_user === true ? (
 				<button className='mini ui green icon button'>Visible</button>
 			) : (

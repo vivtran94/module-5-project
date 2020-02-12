@@ -1,6 +1,14 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat&display=swap");
 
+div {
+	font-family: "Montserrat";
+}
+
 h3 {
+	font-family: "Montserrat";
+}
+
+a {
 	font-family: "Montserrat";
 }
 

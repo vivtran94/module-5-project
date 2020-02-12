@@ -28,23 +28,27 @@ export function PublicHomePage() {
 				}}>
 				<div style={{ float: "right", margin: "5%", textAlign: "center" }}>
 					<h3 style={{ fontSize: "900%", margin: "0px" }}>HALO</h3>
-					<h3 style={{ fontSize: "400%", margin: "0px" }}>ANIMAL CARE</h3>
+					<h3 style={{ fontSize: "400%", margin: "0px" }}>ANIMAL CLINIC</h3>
 				</div>
-				<div style={{ float: "right", margin: "4%", maxWidth: "50%", textAlign: "center" }}>
-					Brookdale Animal Hospital Brookdale Animal Hospital is a full-service veterinary medical facility located in Houston, TX. The professional
-					and courteous staff at Brookdale Animal Hospital seeks to provide the best possible medical, surgical and dental care for their
+				<div style={{ float: "right", marginBottom: "6%", marginRight: "4%", marginLeft: "4%", minWidth: "50%", maxWidth: "50%", textAlign: "center", fontSize: "15px" }}>
+				    Halo Animal Clinic is a full-service veterinary medical facility located in Houston, TX. The professional
+					and courteous staff at Halo Animal Clinic seeks to provide the best possible medical, surgical and dental care for their
 					highly-valued patients. We are committed to promoting responsible pet ownership, preventative health care and health-related educational
-					opportunities for our clients. Brookdale Animal Hospital strives to offer excellence in veterinary care to Houston and surrounding areas.
-					Please take a moment to contact us today to learn more about our veterinary practice and to find out more information about how Brookdale
-					Animal Hospital can serve the needs of you and your cherished pet.
+					opportunities for our clients. Halo Animal Clinic strives to offer excellence in veterinary care to Houston and surrounding areas.
+					Please take a moment to contact us today to learn more about our veterinary practice and to find out more information about how Halo Animal Clinic can serve the needs of you and your cherished pet.
 				</div>
-				<div className="ai-baseline" style={{ textAlign: "center", position: "absolute", bottom: "8px", right: "16px", fontSize: "15px" }}>
-					<div>1120 Scarsdale Boulevard Houston,TX 77089</div>
-                    <div>Phone: (281) 484-4733</div>  
-                    <div>Mon-Fri: 7:30AM-6:00PM Sat: 8:30AM-12:30PM BY APPOINTMENTS ONLY </div>
-                </div>
+                
         
 			</Segment>
+            <div style={{ 
+                display: "flex",
+                verticalAlign: "bottom", 
+                fontSize: "20px", 
+                marginTop: "60px",
+                alignContent: "baseline",
+                justifyContent: "center"}}>
+				<div>1120 Heaven Boulevard, Houston, TX 77089 | Phone: (030) 411-8888 | Mon-Fri: 7:30 AM-6:00 PM | Sat: 8:30 AM-12:30 PM </div>
+            </div>
 		</div>
 	);
 }

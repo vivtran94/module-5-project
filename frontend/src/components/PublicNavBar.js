@@ -18,7 +18,7 @@ export class PublicNavBar extends React.Component {
 		const { open, size } = this.state;
 		return (
 			<div>
-				<div className='ui menu'>
+				<div className='ui menu' style={{borderRadius: "0px"}}>
 					<Link className='item' to='/'>
 						Home
 					</Link>
@@ -35,7 +35,7 @@ export class PublicNavBar extends React.Component {
 								</Dropdown.Menu>
 							</Dropdown>
 						</div>
-						<Link className='ui teal button' to='/signup'>
+						<Link className='ui teal button' style={{fontFamily: "Montserrat", borderRadius: "0px"}} to='/signup'>
 							Sign Up
 						</Link>
 					</div>
