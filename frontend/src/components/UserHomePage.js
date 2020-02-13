@@ -6,7 +6,6 @@ import { Divider, Icon, Modal } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import { AddTaskForm } from "./AddTaskForm";
 import { AddApptForm } from "./AddApptForm";
-import background from "../images/blue_background.jpg";
 import { AddPetForm } from "./AddPetForm";
 import { BACKEND_HOST } from "./ip";
 
@@ -41,22 +40,16 @@ export function UserHomePage() {
 
 	if (user === null) return <h1>Loading</h1>;
 	return (
-		<div
-			style={{
-				backgroundImage: `url(${background})`,
-				backgroundSize: "100% 100%",
-				height: "100%",
-				width: "100%",
-				position: "absolute",
-				zIndex: "0"
-			}}>
-			<Link className='ui right floated button' style={{ margin: "10px" }} to='/' onClick={() => localStorage.clear()}>
-				Log Out
-			</Link>
-			<div style={{ margin: "auto", marginTop: "5vh" }}>
+		<div className='background1' style={{ height: "100vh" }}>
+			<div style={{ padding: "2%", fontFamily: "Montserrat" }}>
+				<Link className='ui right floated teal button' to='/' onClick={() => localStorage.clear()}>
+					Log Out
+				</Link>
+			</div>
+			<div style={{ margin: "auto", paddingTop: "5%" }}>
 				<UserInfoContainer />
 				<Divider horizontal>
-					<div className='ui button' style={{ backgroundColor: "#FF7A75", color: "white" }} onClick={() => showAddPetForm("mini")}>
+					<div className='ui teal button' onClick={() => showAddPetForm("mini")}>
 						<Icon name='plus' />
 						<span>ADD PET</span>
 					</div>

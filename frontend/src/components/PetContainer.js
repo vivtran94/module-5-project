@@ -27,7 +27,7 @@ export function PetContainer(props) {
 								dispatch({ type: "CURRENT_PET", payload: props.pet });
 							}}>
 							<Icon circular name='calendar plus outline' />
-							{`Make an appointment for ${props.pet.name}`}
+							{`Make an appointment`}
 						</h4>
 						<Segment.Group>
 							{props.pet.appointments.map(appointment => (

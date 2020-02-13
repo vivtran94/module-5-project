@@ -43,7 +43,7 @@ export function EmployeeSearchPage() {
 			<EmployeeNavBar />
 
 			<Grid>
-				<Grid.Column width={2}>
+				<Grid.Column width={3}>
 					<SearchResultContainer />
 				</Grid.Column>
 				<Grid.Column width={12}>

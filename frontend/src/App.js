@@ -18,7 +18,7 @@ export default function App() {
 
 	// useEffect(() => {
 	// 	if (localStorage.token != null) {
-	// 		fetch("http://localhost:3000/get_user", {
+	// 		fetch("http://${BACKEND_HOST}/get_user", {
 	// 			headers: {
 	// 				Authorization: `Bearer ${localStorage.token}`
 	// 			}

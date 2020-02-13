@@ -8,9 +8,8 @@ export function AddPetForm() {
 	const petForm = useSelector(state => state.petForm);
 	console.log(petForm.name);
 
-	function handleSubmit(event) {
+	function handleSubmit() {
 		if (localStorage.token) {
-			event.preventDefault();
 			fetch(`http://${BACKEND_HOST}/pets`, {
 				method: "POST",
 				headers: {
@@ -32,6 +31,7 @@ export function AddPetForm() {
 						console.log("failed login");
 					} else {
 						history.push("/user/home");
+						dispatch({ type: "CHANGE_MODAL", key: "open", payload: false });
 					}
 				});
 		} else {

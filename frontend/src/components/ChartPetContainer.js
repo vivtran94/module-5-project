@@ -28,8 +28,8 @@ export function ChartPetContainer(props) {
 						<div className='baseline-space-between'>
 							<div>
 								<span>{props.pet.gender === "M" ? <Icon circular name='mars' /> : <Icon circular name='venus' />} </span>
-								<b style={{ paddingLeft: "5px" }}>{`${selectedUser.last_name.toUpperCase()}  ,`}</b>
-								<b style={{ paddingLeft: "5px" }}>{props.pet.name.toUpperCase()}</b>
+								<b style={{ paddingLeft: "5px", fontSize: "18px" }}>{`${selectedUser.last_name.toUpperCase()}  ,`}</b>
+								<b style={{ paddingLeft: "5px", fontSize: "18px" }}>{props.pet.name.toUpperCase()}</b>
 							</div>
 							<button
 								className='ui blue button'
@@ -65,7 +65,7 @@ export function ChartPetContainer(props) {
 				</Grid.Column>
 				<Grid.Column width={11}>
 					<Segment>
-						<b style={{ marginBottom: "0px", fontSize: "18px"}}>Medical Notes</b>
+						<b style={{ marginBottom: "0px", fontSize: "18px" }}>Medical Notes</b>
 						<Divider
 							horizontal
 							style={{ marginTop: "0px" }}

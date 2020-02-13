@@ -4,8 +4,29 @@ div {
 	font-family: "Montserrat";
 }
 
+button {
+	font-family: "Montserrat";
+}
+
+b {
+	font-family: "Montserrat";
+	font-weight: 900;
+	font-size: 16px;
+}
+
 h3 {
 	font-family: "Montserrat";
+	font-weight: 900;
+}
+
+h4 {
+	font-family: "Montserrat";
+	font-weight: 900;
+}
+
+h5 {
+	font-family: "Montserrat";
+	font-weight: 900;
 }
 
 a {
@@ -32,4 +53,10 @@ a {
 	background: #ffefba; /* fallback for old browsers */
 	background: -webkit-linear-gradient(to bottom, #ece9e6, #ffffff); /* Chrome 10-25, Safari 5.1-6 */
 	background: linear-gradient(to bottom, #ece9e6, #ffffff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.background1 {
+	background: #2bc0e4; /* fallback for old browsers */
+	background: -webkit-linear-gradient(to bottom, #eaecc6, #2bc0e4); /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to bottom, #eaecc6, #2bc0e4); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }

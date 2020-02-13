@@ -9,8 +9,7 @@ export function AddApptForm() {
 	const currentPet = useSelector(state => state.currentPet);
 	console.log(currentPet);
 
-	const handleSubmit = event => {
-		event.preventDefault();
+	const handleSubmit = () => {
 		fetch(`http://${BACKEND_HOST}/appointments`, {
 			method: "POST",
 			headers: {

@@ -17,19 +17,32 @@ admin1 = Employee.create(
     last_name: "Tran",
     role: "admin",
     phone_number: "111-222-3333",
-    email: "viviantran@vetclinic.com"
+    email: "vivian@haloclinic.com"
+    )
+
+    admin1 = Employee.create(
+    username: "b",
+    password: "b",
+    street_address: "11093 Rocky Road",
+    street_state: "Texas",
+    street_zipcode: "77039",
+    first_name: "Jordan",
+    last_name: "Pine",
+    role: "admin",
+    phone_number: "998-111-9322",
+    email: "jordan@haloclinic.com"
     )
     
 user1 = User.create(
-    first_name: "Jack",
-    last_name: "Frost",
+    first_name: "Frosty",
+    last_name: "Snowman",
     date_of_birth: "06-15-1996",
     street_address: "11903 Clear Creek Lane",
     street_city: "Houston",
     street_state: "TX",
     street_zipcode: "77093",
     phone_number: "932-394-3920",
-    email: "jack@gmail.com",
+    email: "frosty@gmail.com",
     driver_license: "1234567890",
     username: "1",
     password: "1"
@@ -38,13 +51,13 @@ user1 = User.create(
 user2 = User.create(
     first_name: "Kungfu",
     last_name: "Panda",
-    date_of_birth: "06-15-1996",
-    street_address: "11903 Clear Creek Lane",
+    date_of_birth: "09-20-1996",
+    street_address: "2213 Rail Road",
     street_city: "Houston",
     street_state: "TX",
-    street_zipcode: "77093",
-    phone_number: "932-394-3920",
-    email: "jack@gmail.com",
+    street_zipcode: "77023",
+    phone_number: "320-224-2211",
+    email: "kungfu@gmail.com",
     driver_license: "1234567890",
     username: "2",
     password: "2"
@@ -54,28 +67,31 @@ user3 = User.create(
     first_name: "Teddy",
     last_name: "Bear",
     date_of_birth: "06-15-1996",
-    street_address: "11903 Clear Creek Lane",
+    street_address: "93002 Candy Lane",
     street_city: "Houston",
     street_state: "TX",
-    street_zipcode: "77093",
-    phone_number: "932-394-3920",
-    email: "jack@gmail.com",
+    street_zipcode: "77022",
+    phone_number: "902-485-2218",
+    email: "teddy@gmail.com",
     driver_license: "1234567890",
     username: "3",
     password: "3"
 )
+
+
+
 pet1 = Pet.create(
     user: user1,
-    name: "Jill",
-    date_of_birth: "03-02-2005",
+    name: "Suki",
+    date_of_birth: "05-23-2017",
     gender: "F",
-    breed: "Terrier",
-    color: "Brown"
+    breed: "Pembroke Welsh Corgi",
+    color: "Tri-color"
 )
 
 pet2 = Pet.create(
     user: user2,
-    name: "Jerry",
+    name: "Rover",
     date_of_birth: "03-02-2005",
     gender: "M",
     breed: "Terrier",
@@ -93,8 +109,8 @@ task1 = Task.create(
 appointment1 = Appointment.create(
     pet: pet1,
     employee: admin1,
-    date: "01-01-2020",
-    start_time: "10:00 AM"
+    date: "03-03-2020",
+    start_time: "9:00 AM"
 )
 
 note1 = Note.create(

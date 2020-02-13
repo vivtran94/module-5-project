@@ -23,8 +23,8 @@ export function ChartContainer() {
 						<div className='baseline-space-between'>
 							<div className='ai-baseline'>
 								<b className='mini ui basic button'>{selectedUser.id}</b>
-								<b style={{ paddingLeft: "10px" }}>{`${selectedUser.last_name.toUpperCase()}  ,`}</b>
-								<b style={{ paddingLeft: "5px" }}>{selectedUser.first_name.toUpperCase()}</b>
+								<b style={{ paddingLeft: "10px", fontSize: "18px" }}>{`${selectedUser.last_name.toUpperCase()}  ,`}</b>
+								<b style={{ paddingLeft: "5px", fontSize: "18px" }}>{selectedUser.first_name.toUpperCase()}</b>
 							</div>
 							<button className='ui blue button' onClick={() => employeeCreateTask("mini")}>
 								Create Task

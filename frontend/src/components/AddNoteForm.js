@@ -7,8 +7,7 @@ export function AddNoteForm() {
 	const noteForm = useSelector(state => state.noteForm);
 	const currentPet = useSelector(state => state.currentPet);
 
-	const handleSubmit = event => {
-		event.preventDefault();
+	const handleSubmit = () => {
 		fetch(`http://${BACKEND_HOST}/notes`, {
 			method: "POST",
 			headers: {
