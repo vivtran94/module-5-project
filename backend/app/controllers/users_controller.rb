@@ -20,7 +20,7 @@ class UsersController < ApplicationController
                 username: params[:username],
                 password: params[:password]
             )
-            puts user.errors.full_messages
+            # puts user.errors.full_messages
             render json: {user: user, token: token}
         end
     end
