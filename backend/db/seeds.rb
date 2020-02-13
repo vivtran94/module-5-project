@@ -8,13 +8,13 @@ Note.destroy_all
 Employee.destroy_all
 
 admin1 = Employee.create(
-    username: "a",
-    password: "a",
+    username: "vivian",
+    password: "vivian",
     street_address: "12345 Rainbow Road",
     street_state: "Texas",
     street_zipcode: "77089",
-    first_name: "Levi",
-    last_name: "Woods",
+    first_name: "Vivian",
+    last_name: "Tran",
     role: "admin",
     phone_number: "111-222-3333",
     email: "vivian@haloclinic.com"
@@ -44,8 +44,8 @@ user1 = User.create(
     phone_number: "932-394-3920",
     email: "frosty@gmail.com",
     driver_license: "1234567890",
-    username: "1",
-    password: "1"
+    username: "frosty",
+    password: "frosty"
 )
 
 user2 = User.create(
@@ -125,11 +125,4 @@ note2 = Note.create(
     employee: admin1,
     note_title: "Sick Visit",
     note_body: "SICK VISIT Lorem Ipsum is simply dummy text of the printing and typesetting industry."
-)
-
-note3 = Note.create(
-    pet: pet1,
-    employee: admin1,
-    note_title: "Surgery",
-    note_body: "SURGERY Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
 )
