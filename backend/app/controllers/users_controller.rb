@@ -1,8 +1,6 @@
 class UsersController < ApplicationController
 
     def create 
-        puts "HERE"
-        token = JWT.encode( { id: user.id, role: 'user' }, 'YOUR SECRET')
         if User.find_by({ username: params[:username]})
             render json: { failed: true, message: "Username already taken. Try another one."}
         else
@@ -20,7 +18,7 @@ class UsersController < ApplicationController
                 username: params[:username],
                 password: params[:password]
             )
-            # puts user.errors.full_messages
+            token = JWT.encode( { id: user.id, role: 'user' }, 'YOUR SECRET')
             render json: {user: user, token: token}
         end
     end
