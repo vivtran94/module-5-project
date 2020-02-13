@@ -13,8 +13,8 @@ admin1 = Employee.create(
     street_address: "12345 Rainbow Road",
     street_state: "Texas",
     street_zipcode: "77089",
-    first_name: "Vivian",
-    last_name: "Tran",
+    first_name: "Levi",
+    last_name: "Woods",
     role: "admin",
     phone_number: "111-222-3333",
     email: "vivian@haloclinic.com"
