@@ -226,7 +226,7 @@ export class SignUpForm extends React.Component {
 							<div className='field'>
 								<label>Password</label>
 								<input
-									type='text'
+									type='password'
 									placeholder='Password'
 									onChange={event => this.setState({ passwordInput: event.target.value })}
 									value={this.state.passwordInput}
